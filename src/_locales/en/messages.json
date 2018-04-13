@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Steem-Secure-Login",
+    "description": "Browser extension which provides interface in chrome to steem blockchain without having to pass private keys to third parties."
+  },
+  "appDescription": {
+    "message": "Steem-Secure-Login for safe login into steem blockchain",
+    "description": "Browser extension which provides interface in chrome to steem blockchain without having to pass private keys to third parties."
+  },
+  "btnTooltip": {
+    "message": "Ext Starter",
+    "description": "Tooltip for the button."
+  }
+}
