@@ -31,7 +31,7 @@ var renderBookmark = (data) => {
   var displayContainer = document.getElementById("display-container")
   if(data) {
     var tmpl = template(data);
-    displayContainer.innerHTML = tmpl;  
+    displayContainer.innerHTML = tmpl;
   } else {
     renderMessage("Sorry, could not extract this page's title and URL")
   }
@@ -56,8 +56,16 @@ popup.addEventListener("click", function(e) {
   }
 });
 
+var self = this;
+
 var optionsLink = document.querySelector(".js-options");
 optionsLink.addEventListener("click", function(e) {
   e.preventDefault();
-  ext.tabs.create({'url': ext.extension.getURL('options.html')});
-})
+  window.console.log("dupa");
+  chrome.extension.getBackgroundPage().console.log("dupa");
+  chrome.extension.getBackgroundPage().console.log(console);
+  chrome.extension.getBackgroundPage().console.log(window);
+  //ext.tabs.create({'url': ext.extension.getURL('options.html')});
+});
+
+console.log("Popup Script fired!");

@@ -1,34 +1,13 @@
 import ext from "./utils/ext";
+import * as steem from "steem";
+import {ExtensionServer} from "./ExtensionServer";
 
-var extractTags = () => {
-  var url = document.location.href;
-  if(!url || !url.match(/^http/)) return;
+const extensionServer = new ExtensionServer();
 
-  var data = {
-    title: "",
-    description: "",
-    url: document.location.href
+extensionServer.on(
+  "steem.api.setOptions", function (params, res) {
+    var object={someproperty: "prop"};
+
+    res.send(object);
   }
-
-  var ogTitle = document.querySelector("meta[property='og:title']");
-  if(ogTitle) {
-    data.title = ogTitle.getAttribute("content")
-  } else {
-    data.title = document.title
-  }
-
-  var descriptionTag = document.querySelector("meta[property='og:description']") || document.querySelector("meta[name='description']")
-  if(descriptionTag) {
-    data.description = descriptionTag.getAttribute("content")
-  }
-
-  return data;
-}
-
-function onRequest(request, sender, sendResponse) {
-  if (request.action === 'process-page') {
-    sendResponse(extractTags())
-  }
-}
-
-ext.runtime.onMessage.addListener(onRequest);
+);
