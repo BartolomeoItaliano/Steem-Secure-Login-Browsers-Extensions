@@ -15,6 +15,7 @@
   },
   "permissions": [
     "tabs",
+    "contentSettings",
     "storage",
     "http://*/*",
     "https://*/*"
@@ -22,6 +23,9 @@
   "options_ui": {
     "page": "options.html"
   },
+  "web_accessible_resources": [
+    "scripts/steemSecureSteemJsInterface.js"
+  ],
   "content_scripts": [
     {
       "matches": [

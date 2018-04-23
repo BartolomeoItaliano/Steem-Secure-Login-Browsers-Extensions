@@ -5,7 +5,6 @@ export class ExtensionServer{
     this.event = document.createEvent('CustomEvent');
 
     document.addEventListener("SSERequest", function (data) {
-      console.log("dupa");
       this.routes[data.detail.route].onRequest(data.detail.params, this.routes[data.detail.route].response);
     }.bind(this));
   }
@@ -22,8 +21,8 @@ class Response{
     this.route = route;
     this.event = document.createEvent('CustomEvent');
   }
-  send(params){
-    this.event.initCustomEvent("SSERequestDone", true, true, {route: this.route, params: params});
+  send(params, err){
+    this.event.initCustomEvent("SSERequestDone", true, true, {route: this.route, params: params, err: err});
     document.dispatchEvent(this.event);
   }
 }

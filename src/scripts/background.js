@@ -25,5 +25,3 @@ ext.runtime.onMessageExternal.addListener(
     // }
   }
 );
-
-console.log('asdasdasdasdasdasdasd');
