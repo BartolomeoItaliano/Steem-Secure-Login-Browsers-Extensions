@@ -1,6 +1,5 @@
-
-export class ExtensionServer{
-  constructor(){
+export class ExtensionServer {
+  constructor() {
     this.routes = {};
     this.event = document.createEvent('CustomEvent');
 
@@ -9,20 +8,31 @@ export class ExtensionServer{
     }.bind(this));
   }
 
-  on(route, onRequest){
-    this.routes[route]={};
-    this.routes[route].onRequest=onRequest;
-    this.routes[route].response= new Response(route);
+  on(route, onRequest) {
+    this.routes[route] = {};
+    this.routes[route].onRequest = onRequest;
+    this.routes[route].response = new Response(route);
   }
 }
 
-class Response{
-  constructor(route){
+class Response {
+  constructor(route) {
     this.route = route;
     this.event = document.createEvent('CustomEvent');
   }
-  send(params, err){
-    this.event.initCustomEvent("SSERequestDone", true, true, {route: this.route, params: params, err: err});
+
+  send(params, err) {
+    let errorSerializable;
+
+    if (err) {
+      errorSerializable = {message: err.message};
+    }
+
+    this.event.initCustomEvent("SSERequestDone", true, true, {
+      route: this.route,
+      params: params,
+      errorSerializable: errorSerializable
+    });
     document.dispatchEvent(this.event);
   }
 }

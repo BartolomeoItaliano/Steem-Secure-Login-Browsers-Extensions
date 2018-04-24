@@ -5,7 +5,7 @@ export class SSERequest{
     this.event = document.createEvent('CustomEvent');
     document.addEventListener("SSERequestDone", function (data) {
       if(this.routes[data.detail.route].onRequest) {
-        this.routes[data.detail.route].onRequest(data.detail.params, data.detail.err);
+        this.routes[data.detail.route].onRequest(data.detail.params, data.detail.errorSerializable);
         delete this.routes[data.detail.route].onRequest;
       }
       else{
