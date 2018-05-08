@@ -24,6 +24,7 @@
     "page": "options.html"
   },
   "web_accessible_resources": [
+    "icons/steemSecureLogo128.png",
     "scripts/steemSecureSteemJsInterface.js"
   ],
   "content_scripts": [

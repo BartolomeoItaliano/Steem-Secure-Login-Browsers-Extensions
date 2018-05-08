@@ -1,24 +1,42 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link href="styles/popup.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="app" class="popup-content">
-      <h1 class="app-name">Extension Boilerplate</h1>
+<head>
+  <meta charset="utf-8">
+  <link href="styles/popup.css" rel="stylesheet">
+  <script src="scripts/popup.js"></script>
+</head>
+<body>
+<div class="login-modal">
+  <div class="row1">
+    <div class="logo"></div>
+    <div class="title"></div>
+  </div>
 
-      <div id="display-container"></div>
-
-      <footer>
-        <p>
-          <small>
-            <a href="#" class="js-options">Options</a>
-          </small>
-        </p>
-      </footer>
+  <form id="loginForm" class="login-form">
+    <div class="login-row">
+      <span class="input-at-label">@</span>
+      <input id="steemLoginInput" type="text" class="input-login" required placeholder="Enter your username">
     </div>
-    
-    <script src="scripts/popup.js"></script>
-  </body>
+    <input id="steemPasswordOrWIFInput" type="password" class="input-password" required placeholder="Password or WIF">
+
+    <div class="login-modal-buttons">
+      <button type="button" id="loginButton" class="login-button">Login on this page</button>
+      <button type="button" id="cancelLoginPopup" class="cancel-button">Cancel</button>
+    </div>
+  </form>
+
+  <form id="logoutForm" class="login-form">
+    <button type="button" id="logoutOnThisPageButton" class="logout-button">Log out on this page</button>
+    <button type="button" id="logoutEverywhereButton" class="logout-button">Log out everywhere</button>
+  </form>
+
+  <hr>
+  <p class="login-modal-footer-text">
+    Join our <b>amazing community</b> to comment and reward others.
+  </p>
+  <button id="signUpButton" type="button" class="sign-up-button">
+    Sign up. Get STEEM!
+  </button>
+</div>
+</body>
 </html>

@@ -1,88 +1,160 @@
-@import "modules/reset";
-@import "modules/variables";
-@import "modules/layout";
-
-body, html {
-  padding: 0;
+body {
   margin: 0;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#app {
-  padding: 20px 20px;
-  background: $white;
+input {
+  box-sizing: border-box;
+  height: 35px;
+  font-size: 17px;
+  padding: 8px;
+  border: 1px solid #cacaca;
 }
 
-footer {
-  color: $text-secondary;
-  text-align: right;
-  font-size: 0.8em;
-  a {
-    outline: none;
-    color: lighten($text-secondary, 10%);
-    &:hover {
-      color: $text-secondary;
-    }
-  }
+form{
+  width: 100%;
 }
 
-.popup-content {
-  min-width: 220px;
-  min-height: 100px;
-  max-width: 350px;
-}
-
-.app-name {
-  font-size: 14px;
-  text-transform: uppercase;
-  color: $text-secondary;
-  text-align: center;
-  margin: 0 auto 1em auto;
-  padding: 0;
-}
-
-.site-description {
-  padding: 0.5em;
-  border: 1px solid $gray;
-  margin: 0;
-
-  h3 {
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid $gray;
-    padding-bottom: 0.5em;
-  }
-
-  .description {
-    color: $text-secondary;
-    max-height: 100px;
-    font-size: 0.8em;
-    line-height: 1.2;
-  }
-
-  .url {
-    outline: none;
-    text-decoration: none;
-    line-height: 1.2;
-    font-size: 0.8em;
-    word-break: break-word;
-    display: block;
-  }
-}
-
-.action-container {
-  margin: 1em auto;
-}
-
-.btn {
-  background: none;
-  border: none;
-  display: inline-block;
+button{
+  border: 0;
   cursor: pointer;
-  padding: 0.5em 1.5em;
-  background: $brand-primary;
-  color: $white;
-  font-weight: $headings-font-weight;
-  border-radius: 2px;
-  outline: none;
-  font-size: 1em;
+}
+
+.login-modal hr{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.login-modal {
+  width: 500px;
+  height: 500px;
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-top: 20px;
+}
+
+.row1 {
+  padding-bottom: 10px;
+}
+
+.row1 .logo{
+  display: inline-block;
+  width: 90px;
+  content:url("../icons/steemSecureLogo128.png");
+}
+.row1 .title{
+  display: inline-block;
+  font-size: 40px;
+}
+
+.login-row{
+  display: flex;
+}
+
+.input-at-label{
+  width: 8%;
+  display: inline-block;
+  border: 1px solid #cacaca;
+  border-right-width: 0;
+  border-radius: 3px 0 0 3px;
+  box-sizing: border-box;
+  background: #e6e6e6;
+  text-align: center;
+  height: 35px;
+  line-height: 2.1;
+  font-size: 15px;
+}
+
+.login-form{
+  margin-top: 10px;
+}
+
+.input-login{
+  width: 92%;
+  display: inline-block;
+  border-radius: 0 3px 3px 0;
+  vertical-align: bottom;
+}
+
+.input-password{
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 3px;
+  vertical-align: bottom;
+}
+
+.login-modal-buttons{
+  margin-top: 40px;
+}
+
+.login-button{
+  min-width: 100px;
+  background-color: #171F24;
+  box-shadow: 0 0 0 0 transparent, 5px 5px 0 0 #06D6A9;
+  color: #fff;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 25px;
+  transition: 0.2s all ease-in-out;
+}
+
+.login-button:hover{
+  background-color: #06D6A9;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1), 7px 7px 0 0 #171F24;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.logout-button{
+  min-width: 100px;
+  background-color: #171F24;
+  box-shadow: 0 0 0 0 transparent, 5px 5px 0 0 #fd1a1a;
+  color: #fff;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 25px;
+  transition: 0.2s all ease-in-out;
+}
+
+.logout-button:hover{
+  background-color: #fd1a1a;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1), 7px 7px 0 0 #171F24;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cancel-button{
+  min-width: 100px;
+  background-color: transparent;
+  color: #788187;
+  padding: 15px 0;
+  font-size: 18px;
+  margin-right: 35px;
+  transition: 0.2s all ease-in-out;
+}
+
+.cancel-button:hover{
+  color: #2C3A45;
+}
+
+.login-modal-footer-text{
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.sign-up-button{
+  min-width: 100px;
+  background-color: transparent;
+  padding: 15px 15px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  transition: 0.2s all ease-in-out;
+}
+
+.sign-up-button:hover{
+  border: 1px solid #049173;
+  color: #049173;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
