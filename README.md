@@ -435,3 +435,173 @@ steem.api.getRepliesByLastUpdate(startAuthor, startPermlink, limit, function(err
   console.log(err, result);
 });
 ```
+
+## Witnesses
+
+
+### Get Witnesses
+```
+steem.api.getWitnesses(witnessIds, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Witness By Account
+```
+steem.api.getWitnessByAccount(accountName, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Witnesses By Vote
+```
+steem.api.getWitnessesByVote(from, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Lookup Witness Accounts
+```
+steem.api.lookupWitnessAccounts(lowerBoundName, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Witness Count
+```
+steem.api.getWitnessCount(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Active Witnesses
+```
+steem.api.getActiveWitnesses(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Miner Queue
+```
+steem.api.getMinerQueue(function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Follow API
+
+### Get Followers
+```
+steem.api.getFollowers(following, startFollower, followType, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Following
+```
+steem.api.getFollowing(follower, startFollowing, followType, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Follow Count
+```
+steem.api.getFollowCount(account, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Broadcast API
+
+### Broadcast Transaction Synchronous
+```
+steem.api.broadcastTransactionSynchronous(trx, function(err, result) {
+  console.log(err, result);
+});
+```
+### Broadcast Block
+```
+steem.api.broadcastBlock(b, function(err, result) {
+  console.log(err, result);
+});
+```
+
+# Broadcast
+
+### Account Create
+```
+steem.broadcast.accountCreate(wif, fee, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, function(err, result) {
+  console.log(err, result);
+});
+```
+### Account Create With Delegation
+```
+steem.broadcast.accountCreateWithDelegation(wif, fee, delegation, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, extensions, function(err, result) {
+  console.log(err, result);
+});
+```
+### Delegate Vesting Shares
+```
+steem.broadcast.delegateVestingShares(delegatee, vesting_shares, function(err, result) {
+  console.log(err, result);
+});
+```
+### Account Update
+```
+steem.broadcast.accountUpdate(owner, active, posting, memoKey, jsonMetadata, function(err, result) {
+  console.log(err, result);
+});
+```
+### Account Witness Proxy
+```
+steem.broadcast.accountWitnessProxy(wif, account, proxy, function(err, result) {
+  console.log(err, result);
+});
+```
+### Account Witness Vote
+```
+steem.broadcast.accountWitnessVote(witness, approve, function(err, result) {
+  console.log(err, result);
+});
+```
+### Challenge Authority
+```
+steem.broadcast.challengeAuthority(challenged, requireOwner, function(err, result) {
+  console.log(err, result);
+});
+```
+### Change Recovery Account
+```
+steem.broadcast.changeRecoveryAccount(wif, accountToRecover, newRecoveryAccount, extensions, function(err, result) {
+  console.log(err, result);
+});
+```
+
+### Comment
+```
+steem.broadcast.comment(wif, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, function(err, result) {
+  console.log(err, result);
+});
+```
+### Comment Options
+```
+steem.broadcast.commentOptions(wif, author, permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions, function(err, result) {
+  console.log(err, result);
+});
+```
+### Comment Payout
+```
+steem.broadcast.commentPayout(permlink, payout, function(err, result) {
+  console.log(err, result);
+});
+```
+### Comment Reward
+```
+steem.broadcast.commentReward(permlink, sbdPayout, vestingPayout, function(err, result) {
+  console.log(err, result);
+});
+```
+### Convert
+```
+steem.broadcast.convert(requestid, amount, function(err, result) {
+  console.log(err, result);
+});
+```
+### Curate Reward
+```
+steem.broadcast.curateReward(reward, commentAuthor, commentPermlink, function(err, result) {
+  console.log(err, result);
+});
+```

@@ -306,7 +306,7 @@ window.SteemSecure.api.getKeyReferences = function (key, callback) {
 
 /**
  * @param {Array<string>} accounts - array of steem accounts names
- * @param {function(Array<Object>)} callback - array with steem accounts public information
+ * @param {function(Object, Array<Object>)} callback - array with steem accounts public information
  */
 window.SteemSecure.api.getAccounts = function (accounts, callback) {
   let params = {accounts};
@@ -532,6 +532,307 @@ window.SteemSecure.api.getRepliesByLastUpdate = function (startAuthor, startPerm
   let params = {startAuthor, startPermlink, limit};
   sseRequest.send("steem.api.getRepliesByLastUpdate", params, callback);
 };
+
+/**
+ * @param {Array<string>} witnessIds
+ * @param {function} callback
+ */
+window.SteemSecure.api.getWitnesses = function (witnessIds, callback) {
+  let params = {witnessIds};
+  sseRequest.send("steem.api.getWitnesses", params, callback);
+};
+
+/**
+ * @param {string} accountName
+ * @param {function} callback
+ */
+window.SteemSecure.api.getWitnessByAccount = function (accountName, callback) {
+  let params = {accountName};
+  sseRequest.send("steem.api.getWitnessByAccount", params, callback);
+};
+
+/**
+ * @param from
+ * @param {string} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getWitnessesByVote = function (from, limit, callback) {
+  let params = {from, limit};
+  sseRequest.send("steem.api.getWitnessesByVote", params, callback);
+};
+
+/**
+ * @param {string} lowerBoundName
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.lookupWitnessAccounts = function (lowerBoundName, limit, callback) {
+  let params = {lowerBoundName, limit};
+  sseRequest.send("steem.api.lookupWitnessAccounts", params, callback);
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.api.getWitnessCount = function (callback) {
+  let params = {};
+  sseRequest.send("steem.api.getWitnessCount", params, callback);
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.api.getActiveWitnesses = function (callback) {
+  let params = {};
+  sseRequest.send("steem.api.getActiveWitnesses", params, callback);
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.api.getMinerQueue = function (callback) {
+  let params = {};
+  sseRequest.send("steem.api.getMinerQueue", params, callback);
+};
+
+/**
+ * @param {string} following
+ * @param {number} startFollower
+ * @param {"blog"} followType
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getFollowers = function (following, startFollower, followType, limit, callback) {
+  let params = {following, startFollower, followType, limit};
+  sseRequest.send("steem.api.getFollowers", params, callback);
+};
+
+/**
+ * @param {string} follower
+ * @param {number} startFollowing
+ * @param {"blog"} followType
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getFollowing = function (follower, startFollowing, followType, limit, callback) {
+  let params = {follower, startFollowing, followType, limit};
+  sseRequest.send("steem.api.getFollowing", params, callback);
+};
+
+/**
+ * @param {string} account
+ * @param {function} callback
+ */
+window.SteemSecure.api.getFollowCount = function (account, callback) {
+  let params = {account};
+  sseRequest.send("steem.api.getFollowCount", params, callback);
+};
+
+/**
+ * @param {object} trx
+ * @param {function} callback
+ */
+window.SteemSecure.api.broadcastTransactionSynchronous = function (trx, callback) {
+  let params = {trx};
+  sseRequest.send("steem.api.broadcastTransactionSynchronous", params, callback);
+};
+
+/**
+ * @param {object} b
+ * @param {function} callback
+ */
+window.SteemSecure.api.broadcastBlock = function (b, callback) {
+  let params = {b};
+  sseRequest.send("steem.api.broadcastBlock", params, callback);
+};
+
+/**
+ * @param {string} wif
+ * @param {string} fee
+ * @param {string} creator
+ * @param {string} newAccountName
+ * @param {string} ownerKey
+ * @param {string} activeKey
+ * @param {string} postingKey
+ * @param {string} memoKey
+ * @param {string} jsonMetadata
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.accountCreate = function (wif, fee, creator, newAccountName, ownerKey, activeKey, postingKey, memoKey, jsonMetadata, callback) {
+  let params = {wif, fee, creator, newAccountName, ownerKey, activeKey, postingKey, memoKey, jsonMetadata};
+  sseRequest.send("steem.broadcast.accountCreate", params, callback);
+};
+
+/**
+ * @param {string} wif
+ * @param {string} fee
+ * @param {string} delegation
+ * @param {string} creator
+ * @param {string} newAccountName
+ * @param {string} ownerKey
+ * @param {string} activeKey
+ * @param {string} postingKey
+ * @param {string} memoKey
+ * @param {string} jsonMetadata
+ * @param {string} extensions
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.accountCreateWithDelegation = function (wif, fee, delegation, creator, newAccountName, ownerKey, activeKey, postingKey, memoKey, jsonMetadata, extensions, callback) {
+  let params = {
+    wif,
+    fee,
+    delegation,
+    creator,
+    newAccountName,
+    ownerKey,
+    activeKey,
+    postingKey,
+    memoKey,
+    jsonMetadata,
+    extensions
+  };
+  sseRequest.send("steem.broadcast.accountCreateWithDelegation", params, callback);
+};
+
+/**
+ * @param {string} delegatee
+ * @param {number} vesting_shares - number with 6 points decimal precision
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.delegateVestingShares = function (delegatee, vesting_shares, callback) {
+  let params = {delegatee, vesting_shares};
+  sseRequest.send("steem.broadcast.delegateVestingShares", params, callback);
+};
+
+/**
+ * @param {string} ownerKey
+ * @param {string} activeKey
+ * @param {string} postingKey
+ * @param {string} memoKey
+ * @param {string} jsonMetadata
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.accountUpdate = function (ownerKey, activeKey, postingKey, memoKey, jsonMetadata, callback) {
+  let params = {ownerKey, activeKey, postingKey, memoKey, jsonMetadata};
+  sseRequest.send("steem.broadcast.accountUpdate", params, callback);
+};
+
+/**
+ * @param proxy
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.accountWitnessProxy = function (proxy, callback) {
+  let params = {proxy};
+  sseRequest.send("steem.broadcast.accountWitnessProxy", params, callback);
+};
+
+/**
+ * @param {string} witness
+ * @param approve
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.accountWitnessVote = function (witness, approve, callback) {
+  let params = {witness, approve};
+  sseRequest.send("steem.broadcast.accountWitnessVote", params, callback);
+};
+
+/**
+ * @param challenged
+ * @param requireOwner
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.challengeAuthority = function (challenged, requireOwner, callback) {
+  let params = {challenged, requireOwner};
+  sseRequest.send("steem.broadcast.challengeAuthority", params, callback);
+};
+
+/**
+ * @param newRecoveryAccount
+ * @param extensions
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.changeRecoveryAccount = function (newRecoveryAccount, extensions, callback) {
+  let params = {newRecoveryAccount, extensions};
+  sseRequest.send("steem.broadcast.changeRecoveryAccount", params, callback);
+};
+
+/**
+ * @param {string} parentAuthor
+ * @param {string} parentPermlink
+ * @param {string} permlink
+ * @param {string} title
+ * @param {string} body
+ * @param {string} body
+ * @param {string} jsonMetadata
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.comment = function (parentAuthor, parentPermlink, permlink, title, body, jsonMetadata, callback) {
+  let params = {parentAuthor, parentPermlink, permlink, title, body, jsonMetadata};
+  sseRequest.send("steem.broadcast.comment", params, callback);
+};
+
+/**
+ * @param {string} permlink
+ * @param {number} maxAcceptedPayout
+ * @param {string} percentSteemDollars
+ * @param allowVotes
+ * @param allowCurationRewards
+ * @param extensions
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.commentOptions = function (permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions, callback) {
+  let params = {permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions};
+  sseRequest.send("steem.broadcast.commentOptions", params, callback);
+};
+
+/**
+ * @param {string} permlink
+ * @param {string} payout
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.commentPayout = function (permlink, payout, callback) {
+  let params = {permlink, payout};
+  sseRequest.send("steem.broadcast.commentPayout", params, callback);
+};
+
+/**
+ * @param {string} permlink
+ * @param {number} sbdPayout
+ * @param {number} vestingPayout
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.commentReward = function (permlink, sbdPayout, vestingPayout, callback) {
+  let params = {permlink, sbdPayout, vestingPayout};
+  sseRequest.send("steem.broadcast.commentReward", params, callback);
+};
+
+/**
+ * @param {number} requestid
+ * @param {number} amount
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.convert = function (requestid, amount, callback) {
+  let params = {requestid, amount};
+  sseRequest.send("steem.broadcast.convert", params, callback);
+};
+
+/**
+ * @param reward
+ * @param {string} commentAuthor
+ * @param {string} commentPermlink
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.curateReward = function (reward, commentAuthor, commentPermlink, callback) {
+  let params = {reward, commentAuthor, commentPermlink};
+  sseRequest.send("steem.broadcast.curateReward", params, callback);
+};
+
+
+
+
+
+
+
 
 /**
  * @param {string} to - Steem Account Name
