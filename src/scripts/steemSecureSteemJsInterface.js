@@ -296,6 +296,15 @@ window.SteemSecure.api.getVestingDelegations = function (account, from, limit, c
 };
 
 /**
+ * @param {string} key
+ * @param {function} callback
+ */
+window.SteemSecure.api.getKeyReferences = function (key, callback) {
+  let params = {key};
+  sseRequest.send("steem.api.getKeyReferences", params, callback);
+};
+
+/**
  * @param {Array<string>} accounts - array of steem accounts names
  * @param {function(Array<Object>)} callback - array with steem accounts public information
  */
@@ -305,13 +314,87 @@ window.SteemSecure.api.getAccounts = function (accounts, callback) {
 };
 
 /**
+ * @param {number} accountId
+ * @param {function} callback
+ */
+window.SteemSecure.api.getAccountReferences = function (accountId, callback) {
+  let params = {accountId};
+  sseRequest.send("steem.api.getAccountReferences", params, callback);
+};
+
+/**
+ * @param {Array<string>} accountNames - array of steem accounts names
+ * @param {function} callback
+ */
+window.SteemSecure.api.lookupAccountNames = function (accountNames, callback) {
+  let params = {accountNames};
+  sseRequest.send("steem.api.lookupAccountNames", params, callback);
+};
+
+/**
+ * @param {string} lowerBoundName
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.lookupAccounts = function (lowerBoundName, limit, callback) {
+  let params = {lowerBoundName, limit};
+  sseRequest.send("steem.api.lookupAccounts", params, callback);
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.api.getAccountCount = function (callback) {
+  let params = {};
+  sseRequest.send("steem.api.getAccountCount", params, callback);
+};
+
+/**
+ * @param {string} accountName
+ * @param {function} callback
+ */
+window.SteemSecure.api.getConversionRequests = function (accountName, callback) {
+  let params = {accountName};
+  sseRequest.send("steem.api.getConversionRequests", params, callback);
+};
+
+/**
+ * @param {string} account
+ * @param {string} from
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getAccountHistory = function (account, from, limit, callback) {
+  let params = {account, from, limit};
+  sseRequest.send("steem.api.getAccountHistory", params, callback);
+};
+
+/**
+ * @param {string} account
+ * @param {function} callback
+ */
+window.SteemSecure.api.getOwnerHistory = function (account, callback) {
+  let params = {account};
+  sseRequest.send("steem.api.getOwnerHistory", params, callback);
+};
+
+/**
+ * @param {string} account
+ * @param {function} callback
+ */
+window.SteemSecure.api.getRecoveryRequest = function (account, callback) {
+  let params = {account};
+  sseRequest.send("steem.api.getRecoveryRequest", params, callback);
+};
+
+/**
  * @param {string} to - Steem Account Name
  * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
  * @param {string} memo - additional transfer message
  * @param {function} callback
  */
 window.SteemSecure.broadcast.prepareAndSignTransferTransaction = function (to, amount, memo, callback) {
-  let params = {wif, from, to, amount, memo};
+  let params = {to, amount, memo};
   sseRequest.send("steem.broadcast.prepareAndSignTransferTransaction", params, callback);
 };
 

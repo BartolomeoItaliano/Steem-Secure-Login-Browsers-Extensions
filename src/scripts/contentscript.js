@@ -248,8 +248,80 @@ extensionServer.on(
 );
 
 extensionServer.on(
+  "steem.api.getKeyReferences", function (params, eResponse) {
+    steem.api.getKeyReferences(params.key, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
   "steem.api.getAccounts", function (params, eResponse) {
     steem.api.getAccounts(params.accounts, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getAccountReferences", function (params, eResponse) {
+    steem.api.getAccountReferences(params.accounts, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.lookupAccountNames", function (params, eResponse) {
+    steem.api.lookupAccountNames(params.accountNames, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.lookupAccounts", function (params, eResponse) {
+    steem.api.lookupAccounts(params.lowerBoundName, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getAccountCount", function (params, eResponse) {
+    steem.api.getAccountCount(function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getConversionRequests", function (params, eResponse) {
+    steem.api.getConversionRequests(params.accountName, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getAccountHistory", function (params, eResponse) {
+    steem.api.getAccountHistory(params.account, params.from, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getOwnerHistory", function (params, eResponse) {
+    steem.api.getOwnerHistory(params.account, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getRecoveryRequest", function (params, eResponse) {
+    steem.api.getRecoveryRequest(params.account, function (err, res) {
       eResponse.send(res, err);
     });
   }
