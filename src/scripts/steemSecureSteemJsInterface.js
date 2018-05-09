@@ -153,6 +153,73 @@ window.SteemSecure.api.getDiscussionsByComments= function(query, callback){
 };
 
 /**
+ * @param {number} blockNum
+ * @param {function} callback
+ */
+window.SteemSecure.api.getBlockHeader= function(blockNum, callback){
+  let params = {blockNum};
+  sseRequest.send("steem.api.getBlockHeader", params, callback);
+};
+
+/**
+ * @param {number} blockNum
+ * @param {function} callback
+ */
+window.SteemSecure.api.getBlock= function(blockNum, callback){
+  let params = {blockNum};
+  sseRequest.send("steem.api.getBlock", params, callback);
+};
+
+/**
+ * @param {string} path
+ * @param {function} callback
+ */
+window.SteemSecure.api.getState= function(path, callback){
+  let params = {path};
+  sseRequest.send("steem.api.getState", params, callback);
+};
+
+/**
+ * @param after
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getTrendingCategories= function(after, limit, callback){
+  let params = {after, limit};
+  sseRequest.send("steem.api.getTrendingCategories", params, callback);
+};
+
+/**
+ * @param after
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getBestCategories= function(after, limit, callback){
+  let params = {after, limit};
+  sseRequest.send("steem.api.getBestCategories", params, callback);
+};
+
+/**
+ * @param after
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getActiveCategories= function(after, limit, callback){
+  let params = {after, limit};
+  sseRequest.send("steem.api.getActiveCategories", params, callback);
+};
+
+/**
+ * @param after
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getRecentCategories= function(after, limit, callback){
+  let params = {after, limit};
+  sseRequest.send("steem.api.getRecentCategories", params, callback);
+};
+
+/**
  * @param {Array<string>} accounts - array of steem accounts names
  * @param {function(Array<Object>)} callback - array with steem accounts public information
  */

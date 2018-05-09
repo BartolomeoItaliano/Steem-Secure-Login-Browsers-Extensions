@@ -164,3 +164,48 @@ SteemSecure.api.getDiscussionsByComments(query, function(err, result) {
   console.log(err, result);
 });
 ```
+
+## Blocks and transactions
+
+### Get Block Header
+```
+SteemSecure.api.getBlockHeader(blockNum, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Block
+```
+SteemSecure.api.getBlock(blockNum, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get State
+```
+SteemSecure.api.getState(path, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Trending Categories
+```
+SteemSecure.api.getTrendingCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Best Categories
+```
+SteemSecure.api.getBestCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Active Categories
+```
+SteemSecure.api.getActiveCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Recent Categories
+```
+SteemSecure.api.getRecentCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```

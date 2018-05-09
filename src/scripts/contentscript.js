@@ -128,6 +128,62 @@ extensionServer.on(
 );
 
 extensionServer.on(
+  "steem.api.getBlockHeader", function (params, eResponse) {
+    steem.api.getBlockHeader(params.blockNum, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getBlock", function (params, eResponse) {
+    steem.api.getBlock(params.blockNum, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getState", function (params, eResponse) {
+    steem.api.getState(params.path, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getTrendingCategories", function (params, eResponse) {
+    steem.api.getTrendingCategories(params.after, params.limit, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getBestCategories", function (params, eResponse) {
+    steem.api.getBestCategories(params.after, params.limit, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getActiveCategories", function (params, eResponse) {
+    steem.api.getActiveCategories(params.after, params.limit, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getRecentCategories", function (params, eResponse) {
+    steem.api.getRecentCategories(params.after, params.limit, function(err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
   "steem.api.getAccounts", function (params, eResponse) {
     steem.api.getAccounts(params.accounts, function (err, res) {
       eResponse.send(res, err);
