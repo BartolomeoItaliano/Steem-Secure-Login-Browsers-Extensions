@@ -63,3 +63,104 @@
   Browser does not have access to it.
 
 </div>
+
+<div>
+  <h1>
+    API DOCUMENTATION
+  </h1>
+  
+  ##### API similar to steem-js! If some method throws error or you don't know how to use it look for tutorials for steem-js library.
+  
+</div>
+
+## Config
+Default config should work with steem. however you can change it to work with golos
+as 
+```js
+SteemSecure.api.setOptions({ url: 'wss://ws.golos.io' }); // assuming websocket is work at ws.golos.io
+SteemSecure.config.set('address_prefix','GLS');
+SteemSecure.config.set('chain_id','782a3039b478c839e4cb0c941ff4eaeb7df40bdd68bd441afd444b9da763de12');
+```
+### set
+```
+SteemSecure.config.set('address_prefix','STM');
+```
+### get
+```
+SteemSecure.config.get('chain_id');
+```
+
+## Tags
+
+### Get Trending Tags
+```
+SteemSecure.api.getTrendingTags(afterTag, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Trending
+```
+SteemSecure.api.getDiscussionsByTrending(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Created
+```
+SteemSecure.api.getDiscussionsByCreated(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Active
+```
+SteemSecure.api.getDiscussionsByActive(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Cashout
+```
+SteemSecure.api.getDiscussionsByCashout(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Payout
+```
+SteemSecure.api.getDiscussionsByPayout(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Votes
+```
+SteemSecure.api.getDiscussionsByVotes(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Children
+```
+SteemSecure.api.getDiscussionsByChildren(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Hot
+```
+SteemSecure.api.getDiscussionsByHot(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Feed
+```
+SteemSecure.api.getDiscussionsByFeed(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Blog
+```
+SteemSecure.api.getDiscussionsByBlog(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Comments
+```
+SteemSecure.api.getDiscussionsByComments(query, function(err, result) {
+  console.log(err, result);
+});
+```
