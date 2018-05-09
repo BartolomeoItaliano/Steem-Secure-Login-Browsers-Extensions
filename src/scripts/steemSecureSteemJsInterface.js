@@ -388,6 +388,152 @@ window.SteemSecure.api.getRecoveryRequest = function (account, callback) {
 };
 
 /**
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getOrderBook = function (limit, callback) {
+  let params = {limit};
+  sseRequest.send("steem.api.getOrderBook", params, callback);
+};
+
+/**
+ * @param {string} owner
+ * @param {function} callback
+ */
+window.SteemSecure.api.getOpenOrders = function (owner, callback) {
+  let params = {owner};
+  sseRequest.send("steem.api.getOpenOrders", params, callback);
+};
+
+/**
+ * @param {string} startAccount
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getLiquidityQueue = function (startAccount, limit, callback) {
+  let params = {startAccount, limit};
+  sseRequest.send("steem.api.getLiquidityQueue", params, callback);
+};
+
+/**
+ * @param {object} trx
+ * @param {function} callback
+ */
+window.SteemSecure.api.getTransactionHex = function (trx, callback) {
+  let params = {trx};
+  sseRequest.send("steem.api.getTransactionHex", params, callback);
+};
+
+/**
+ * @param {number} trxId
+ * @param {function} callback
+ */
+window.SteemSecure.api.getTransaction = function (trxId, callback) {
+  let params = {trxId};
+  sseRequest.send("steem.api.getTransaction", params, callback);
+};
+
+/**
+ * @param {object} trx
+ * @param {Array<string>} availableKeys
+ * @param {function} callback
+ */
+window.SteemSecure.api.getRequiredSignatures = function (trx, availableKeys, callback) {
+  let params = {trx, availableKeys};
+  sseRequest.send("steem.api.getRequiredSignatures", params, callback);
+};
+
+/**
+ * @param {object} trx
+ * @param {function} callback
+ */
+window.SteemSecure.api.getPotentialSignatures = function (trx, callback) {
+  let params = {trx};
+  sseRequest.send("steem.api.getPotentialSignatures", params, callback);
+};
+
+/**
+ * @param {object} trx
+ * @param {function} callback
+ */
+window.SteemSecure.api.verifyAuthority = function (trx, callback) {
+  let params = {trx};
+  sseRequest.send("steem.api.verifyAuthority", params, callback);
+};
+
+/**
+ * @param {string||number} nameOrId
+ * @param signers
+ * @param {function} callback
+ */
+window.SteemSecure.api.verifyAccountAuthority = function (nameOrId, signers, callback) {
+  let params = {nameOrId, signers};
+  sseRequest.send("steem.api.verifyAccountAuthority", params, callback);
+};
+
+/**
+ * @param {string} author
+ * @param {string} permlink
+ * @param {function} callback
+ */
+window.SteemSecure.api.getActiveVotes = function (author, permlink, callback) {
+  let params = {author, permlink};
+  sseRequest.send("steem.api.getActiveVotes", params, callback);
+};
+
+/**
+ * @param {string} voter
+ * @param {function} callback
+ */
+window.SteemSecure.api.getAccountVotes = function (voter, callback) {
+  let params = {voter};
+  sseRequest.send("steem.api.getAccountVotes", params, callback);
+};
+
+/**
+ * @param {string} author
+ * @param {string} permlink
+ * @param {function} callback
+ */
+window.SteemSecure.api.getContent = function (author, permlink, callback) {
+  let params = {author, permlink};
+  sseRequest.send("steem.api.getContent", params, callback);
+};
+
+/**
+ * @param {string} author
+ * @param {string} permlink
+ * @param {function} callback
+ */
+window.SteemSecure.api.getContentReplies = function (author, permlink, callback) {
+  let params = {author, permlink};
+  sseRequest.send("steem.api.getContentReplies", params, callback);
+};
+
+/**
+ * @param {string} author
+ * @param {string} startPermlink
+ * @param beforeDate
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getDiscussionsByAuthorBeforeDate = function (author, startPermlink, beforeDate, limit, callback) {
+  let params = {author, startPermlink, beforeDate, limit};
+  sseRequest.send("steem.api.getDiscussionsByAuthorBeforeDate", params, callback);
+};
+
+/**
+ * @param {string} startAuthor
+ * @param {string} startPermlink
+ * @param {number} limit
+ * @param {function} callback
+ */
+window.SteemSecure.api.getRepliesByLastUpdate = function (startAuthor, startPermlink, limit, callback) {
+  let params = {startAuthor, startPermlink, limit};
+  sseRequest.send("steem.api.getRepliesByLastUpdate", params, callback);
+};
+
+/**
  * @param {string} to - Steem Account Name
  * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
  * @param {string} memo - additional transfer message

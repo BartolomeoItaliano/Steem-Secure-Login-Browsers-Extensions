@@ -332,3 +332,106 @@ steem.api.getRecoveryRequest(account, function(err, result) {
   console.log(err, result);
 });
 ```
+
+## Market
+
+### Get Order Book
+```
+steem.api.getOrderBook(limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Open Orders
+```
+steem.api.getOpenOrders(owner, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Liquidity Queue
+```
+steem.api.getLiquidityQueue(startAccount, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Authority / validation
+
+### Get Transaction Hex
+```
+steem.api.getTransactionHex(trx, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Transaction
+```
+steem.api.getTransaction(trxId, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Required Signatures
+```
+steem.api.getRequiredSignatures(trx, availableKeys, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Potential Signatures
+```
+steem.api.getPotentialSignatures(trx, function(err, result) {
+  console.log(err, result);
+});
+```
+### Verify Authority
+```
+steem.api.verifyAuthority(trx, function(err, result) {
+  console.log(err, result);
+});
+```
+### Verify Account Authority
+```
+steem.api.verifyAccountAuthority(nameOrId, signers, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Votes
+
+### Get Active Votes
+```
+steem.api.getActiveVotes(author, permlink, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Account Votes
+```
+steem.api.getAccountVotes(voter, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Content
+
+
+### Get Content
+```
+steem.api.getContent(author, permlink, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Content Replies
+```
+steem.api.getContentReplies(author, permlink, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Author Before Date
+```
+steem.api.getDiscussionsByAuthorBeforeDate(author, startPermlink, beforeDate, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Replies By Last Update
+```
+steem.api.getRepliesByLastUpdate(startAuthor, startPermlink, limit, function(err, result) {
+  console.log(err, result);
+});
+```
