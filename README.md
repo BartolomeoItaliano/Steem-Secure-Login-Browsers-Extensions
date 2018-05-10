@@ -72,3 +72,274 @@
   solution for steem-js method.
   </p>
 </div>
+
+<div>
+  <h1>
+    API DOCUMENTATION
+  </h1>
+  
+  ##### API similar to steem-js! If some method throws error or you don't know how to use it look for tutorials for steem-js library.
+  
+</div>
+
+## Config
+Default config should work with steem. however you can change it to work with golos
+as 
+```js
+SteemSecure.api.setOptions({ url: 'wss://ws.golos.io' }); // assuming websocket is work at ws.golos.io
+SteemSecure.config.set('address_prefix','GLS');
+SteemSecure.config.set('chain_id','782a3039b478c839e4cb0c941ff4eaeb7df40bdd68bd441afd444b9da763de12');
+```
+### set
+```
+SteemSecure.config.set('address_prefix','STM');
+```
+### get
+```
+SteemSecure.config.get('chain_id', function(err, res){
+  console.log(err, result);
+});
+```
+
+## Tags
+
+### Get Trending Tags
+```
+SteemSecure.api.getTrendingTags(afterTag, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Trending
+```
+SteemSecure.api.getDiscussionsByTrending(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Created
+```
+SteemSecure.api.getDiscussionsByCreated(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Active
+```
+SteemSecure.api.getDiscussionsByActive(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Cashout
+```
+SteemSecure.api.getDiscussionsByCashout(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Payout
+```
+SteemSecure.api.getDiscussionsByPayout(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Votes
+```
+SteemSecure.api.getDiscussionsByVotes(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Children
+```
+SteemSecure.api.getDiscussionsByChildren(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Hot
+```
+SteemSecure.api.getDiscussionsByHot(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Feed
+```
+SteemSecure.api.getDiscussionsByFeed(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Blog
+```
+SteemSecure.api.getDiscussionsByBlog(query, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Discussions By Comments
+```
+SteemSecure.api.getDiscussionsByComments(query, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Blocks and transactions
+
+### Get Block Header
+```
+SteemSecure.api.getBlockHeader(blockNum, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Block
+```
+SteemSecure.api.getBlock(blockNum, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get State
+```
+SteemSecure.api.getState(path, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Trending Categories
+```
+SteemSecure.api.getTrendingCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Best Categories
+```
+SteemSecure.api.getBestCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Active Categories
+```
+SteemSecure.api.getActiveCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Recent Categories
+```
+SteemSecure.api.getRecentCategories(after, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Globals
+
+### Get Config
+```
+steem.api.getConfig(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Dynamic Global Properties
+```
+steem.api.getDynamicGlobalProperties(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Chain Properties
+```
+steem.api.getChainProperties(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Feed History
+```
+steem.api.getFeedHistory(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Current Median History Price
+```
+steem.api.getCurrentMedianHistoryPrice(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Hardfork Version
+```
+steem.api.getHardforkVersion(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Next Scheduled Hardfork
+```
+steem.api.getNextScheduledHardfork(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Reward Fund
+```
+steem.api.getRewardFund(name, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Vesting Delegations
+```
+steem.api.getVestingDelegations(account, from, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Keys
+
+### Get Key References
+```
+steem.api.getKeyReferences(key, function(err, result) {
+  console.log(err, result);
+});
+```
+
+## Accounts
+
+### Get Accounts
+```
+steem.api.getAccounts(names, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Account References
+```
+steem.api.getAccountReferences(accountId, function(err, result) {
+  console.log(err, result);
+});
+```
+### Lookup Account Names
+```
+steem.api.lookupAccountNames(accountNames, function(err, result) {
+  console.log(err, result);
+});
+```
+### Lookup Accounts
+```
+steem.api.lookupAccounts(lowerBoundName, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Account Count
+```
+steem.api.getAccountCount(function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Conversion Requests
+```
+steem.api.getConversionRequests(accountName, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Account History
+```
+steem.api.getAccountHistory(account, from, limit, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Owner History
+```
+steem.api.getOwnerHistory(account, function(err, result) {
+  console.log(err, result);
+});
+```
+### Get Recovery Request
+```
+steem.api.getRecoveryRequest(account, function(err, result) {
+  console.log(err, result);
+});
+```

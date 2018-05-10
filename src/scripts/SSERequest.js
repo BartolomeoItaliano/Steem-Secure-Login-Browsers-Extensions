@@ -5,11 +5,11 @@ export class SSERequest{
     this.event = document.createEvent('CustomEvent');
     document.addEventListener("SSERequestDone", function (data) {
       if(this.routes[data.detail.route].onRequest) {
-        this.routes[data.detail.route].onRequest(data.detail.params, data.detail.errorSerializable);
+        this.routes[data.detail.route].onRequest(data.detail.errorSerializable, data.detail.params);
         delete this.routes[data.detail.route].onRequest;
       }
       else{
-        console.warn("You didn't use callback property, it may cause unexpected extension behaviour.");
+        console.warn("You didn't use callback property, it may cause raise condition.");
       }
     }.bind(this));
   }
