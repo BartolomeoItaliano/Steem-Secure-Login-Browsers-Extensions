@@ -605,3 +605,219 @@ steem.broadcast.curateReward(reward, commentAuthor, commentPermlink, function(er
   console.log(err, result);
 });
 ```
+### Custom
+```
+steem.broadcast.custom(requiredAuths, id, data, function(err, result) {
+  console.log(err, result);
+});
+```
+### Custom Binary
+```
+steem.broadcast.customBinary(id, data, function(err, result) {
+  console.log(err, result);
+});
+```
+### Custom Json
+```
+steem.broadcast.customJson(requiredAuths, requiredPostingAuths, id, json, function(err, result) {
+  console.log(err, result);
+});
+```
+### Delete Comment
+```
+steem.broadcast.deleteComment(permlink, function(err, result) {
+  console.log(err, result);
+});
+```
+### Escrow Dispute
+```
+steem.broadcast.escrowDispute(to, agent, who, escrowId, function(err, result) {
+  console.log(err, result);
+});
+```
+### Escrow Release
+```
+steem.broadcast.escrowRelease(to, agent, who, receiver, escrowId, sbdAmount, steemAmount, function(err, result) {
+  console.log(err, result);
+});
+```
+### Escrow Transfer
+```
+steem.broadcast.escrowTransfer(to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, function(err, result) {
+  console.log(err, result);
+});
+```
+### Feed Publish
+```
+steem.broadcast.feedPublish(exchangeRate, function(err, result) {
+  console.log(err, result);
+});
+```
+### Pow2
+```
+steem.broadcast.pow2(wif, work, newOwnerKey, props, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Convert Request
+```
+steem.broadcast.fillConvertRequest(wif, owner, requestid, amountIn, amountOut, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Order
+```
+steem.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Vesting Withdraw
+```
+steem.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
+  console.log(err, result);
+});
+```
+### Interest
+```
+steem.broadcast.interest(wif, owner, interest, function(err, result) {
+  console.log(err, result);
+});
+```
+### Limit Order Cancel
+```
+steem.broadcast.limitOrderCancel(orderid, function(err, result) {
+  console.log(err, result);
+});
+```
+### Limit Order Create
+```
+steem.broadcast.limitOrderCreate(orderid, amountToSell, minToReceive, fillOrKill, expiration, function(err, result) {
+  console.log(err, result);
+});
+```
+### Limit Order Create2
+```
+steem.broadcast.limitOrderCreate2(orderid, amountToSell, exchangeRate, fillOrKill, expiration, function(err, result) {
+  console.log(err, result);
+});
+```
+### Liquidity Reward
+```
+steem.broadcast.liquidityReward(payout, function(err, result) {
+  console.log(err, result);
+});
+```
+### Pow
+```
+steem.broadcast.pow(wif, worker, input, signature, work, function(err, result) {
+  console.log(err, result);
+});
+```
+### Prove Authority
+```
+steem.broadcast.proveAuthority(wif, challenged, requireOwner, function(err, result) {
+  console.log(err, result);
+});
+```
+### Recover Account
+```
+steem.broadcast.recoverAccount(newOwnerAuthority, recentOwnerAuthority, extensions, function(err, result) {
+  console.log(err, result);
+});
+```
+### Report Over Production
+```
+steem.broadcast.reportOverProduction(firstBlock, secondBlock, function(err, result) {
+  console.log(err, result);
+});
+```
+### Request Account Recovery
+```
+steem.broadcast.requestAccountRecovery(accountToRecover, newOwnerAuthority, extensions, function(err, result) {
+  console.log(err, result);
+});
+```
+### Escrow Approve
+```
+steem.broadcast.escrowApprove(to, agent, who, escrowId, approve, function(err, result) {
+  console.log(err, result);
+});
+```
+### Set Withdraw Vesting Route
+```
+steem.broadcast.setWithdrawVestingRoute(toAccount, percent, autoVest, function(err, result) {
+  console.log(err, result);
+});
+```
+### Transfer
+```
+steem.broadcast.transfer(to, amount, memo, function(err, result) {
+  console.log(err, result);
+});
+```
+### Transfer To Vesting
+```
+steem.broadcast.transferToVesting(to, amount, function(err, result) {
+  console.log(err, result);
+});
+```
+### Vote
+```
+steem.broadcast.vote(author, permlink, weight, function(err, result) {
+  console.log(err, result);
+});
+```
+### Withdraw Vesting
+```
+steem.broadcast.withdrawVesting(vestingShares, function(err, result) {
+  console.log(err, result);
+});
+```
+### Witness Update
+```
+steem.broadcast.witnessUpdate(url, blockSigningKey, props, fee, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Vesting Withdraw
+```
+steem.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Order
+```
+steem.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
+  console.log(err, result);
+});
+```
+### Fill Transfer From Savings
+```
+steem.broadcast.fillTransferFromSavings(wif, from, to, amount, requestId, memo, function(err, result) {
+  console.log(err, result);
+});
+```
+### Comment Payout
+```
+steem.broadcast.commentPayout(wif, author, permlink, payout, function(err, result) {
+  console.log(err, result);
+});
+```
+### Transfer To Savings
+```
+steem.broadcast.transferToSavings(wif, from, to, amount, memo, function(err, result) {
+  console.log(err, result);
+});
+```
+### Transfer From Savings
+```
+steem.broadcast.transferFromSavings(wif, from, requestId, to, amount, memo, function(err, result) {
+  console.log(err, result);
+});
+```
+### Cancel Transfer From Savings
+```
+steem.broadcast.cancelTransferFromSavings(requestId, function(err, result) {
+  console.log(err, result);
+});
+```

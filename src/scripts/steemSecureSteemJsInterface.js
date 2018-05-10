@@ -827,11 +827,418 @@ window.SteemSecure.broadcast.curateReward = function (reward, commentAuthor, com
   sseRequest.send("steem.broadcast.curateReward", params, callback);
 };
 
+/**
+ * @param requiredAuths
+ * @param {number} id
+ * @param {Object} data
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.custom = function (requiredAuths, id, data, callback) {
+  let params = {requiredAuths, id, data};
+  sseRequest.send("steem.broadcast.custom", params, callback);
+};
 
+/**
+ * @param {number} id
+ * @param {Object} data
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.customBinary = function (id, data, callback) {
+  let params = {id, data};
+  sseRequest.send("steem.broadcast.customBinary", params, callback);
+};
 
+/**
+ * @param {object} requiredAuths
+ * @param {object} requiredPostingAuths
+ * @param {number} id
+ * @param {string} json
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.customJson = function (requiredAuths, requiredPostingAuths, id, json, callback) {
+  let params = {requiredAuths, requiredPostingAuths, id, json};
+  sseRequest.send("steem.broadcast.customJson", params, callback);
+};
 
+/**
+ * @param {string} permlink
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.deleteComment = function (permlink, callback) {
+  let params = {permlink};
+  sseRequest.send("steem.broadcast.deleteComment", params, callback);
+};
 
+/**
+ * @param {string} to
+ * @param agent
+ * @param who
+ * @param escrowId
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.escrowDispute = function (to, agent, who, escrowId, callback) {
+  let params = {to, agent, who, escrowId};
+  sseRequest.send("steem.broadcast.escrowDispute", params, callback);
+};
 
+/**
+ * @param {string} to
+ * @param agent
+ * @param who
+ * @param receiver
+ * @param escrowId
+ * @param {number} sbdAmount
+ * @param {number} steemAmount
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.escrowRelease = function (to, agent, who, receiver, escrowId, sbdAmount, steemAmount, callback) {
+  let params = {to, agent, who, receiver, escrowId, sbdAmount, steemAmount};
+  sseRequest.send("steem.broadcast.escrowRelease", params, callback);
+};
+
+/**
+ * @param {string} to
+ * @param agent
+ * @param escrowId
+ * @param {number} sbdAmount
+ * @param {number} steemAmount
+ * @param fee
+ * @param ratificationDeadline
+ * @param escrowExpiration
+ * @param jsonMeta
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.escrowTransfer = function (to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, callback) {
+  let params = {to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta};
+  sseRequest.send("steem.broadcast.escrowTransfer", params, callback);
+};
+
+/**
+ * @param exchangeRate
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.feedPublish = function (exchangeRate, callback) {
+  let params = {exchangeRate};
+  sseRequest.send("steem.broadcast.feedPublish", params, callback);
+};
+
+/**
+ * @param work
+ * @param newOwnerKey
+ * @param props
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.pow2 = function (work, newOwnerKey, props, callback) {
+  let params = {work, newOwnerKey, props};
+  sseRequest.send("steem.broadcast.pow2", params, callback);
+};
+
+/**
+ * @param requestid
+ * @param amountIn
+ * @param amountOut
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.fillConvertRequest = function (requestid, amountIn, amountOut, callback) {
+  let params = {requestid, amountIn, amountOut};
+  sseRequest.send("steem.broadcast.fillConvertRequest", params, callback);
+};
+
+/**
+ * @param currentOrderid
+ * @param currentPays
+ * @param openOwner
+ * @param openOrderid
+ * @param openPays
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.fillOrder = function (currentOrderid, currentPays, openOwner, openOrderid, openPays, callback) {
+  let params = {currentOrderid, currentPays, openOwner, openOrderid, openPays};
+  sseRequest.send("steem.broadcast.fillOrder", params, callback);
+};
+
+/**
+ * @param toAccount
+ * @param withdrawn
+ * @param deposited
+ * @param openPays
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.fillVestingWithdraw = function (toAccount, withdrawn, deposited, openPays, callback) {
+  let params = {toAccount, withdrawn, deposited};
+  sseRequest.send("steem.broadcast.fillVestingWithdraw", params, callback);
+};
+
+/**
+ * @param interest
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.interest = function (interest, callback) {
+  let params = {interest};
+  sseRequest.send("steem.broadcast.interest", params, callback);
+};
+
+/**
+ * @param orderid
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.limitOrderCancel = function (orderid, callback) {
+  let params = {orderid};
+  sseRequest.send("steem.broadcast.limitOrderCancel", params, callback);
+};
+
+/**
+ * @param orderid
+ * @param amountToSell
+ * @param minToReceive
+ * @param fillOrKill
+ * @param expiration
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.limitOrderCreate = function (orderid, amountToSell, minToReceive, fillOrKill, expiration, callback) {
+  let params = {orderid, amountToSell, minToReceive, fillOrKill, expiration};
+  sseRequest.send("steem.broadcast.limitOrderCreate", params, callback);
+};
+
+/**
+ * @param orderid
+ * @param amountToSell
+ * @param minToReceive
+ * @param fillOrKill
+ * @param expiration
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.limitOrderCreate2 = function (orderid, amountToSell, minToReceive, fillOrKill, expiration, callback) {
+  let params = {orderid, amountToSell, minToReceive, fillOrKill, expiration};
+  sseRequest.send("steem.broadcast.limitOrderCreate2", params, callback);
+};
+
+/**
+ * @param payout
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.liquidityReward = function (payout, callback) {
+  let params = {payout};
+  sseRequest.send("steem.broadcast.liquidityReward", params, callback);
+};
+
+/**
+ * @param input
+ * @param signature
+ * @param work
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.pow = function (input, signature, work, callback) {
+  let params = {input, signature, work};
+  sseRequest.send("steem.broadcast.pow", params, callback);
+};
+
+/**
+ * @param requireOwner
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.proveAuthority = function (requireOwner, callback) {
+  let params = {requireOwner};
+  sseRequest.send("steem.broadcast.proveAuthority", params, callback);
+};
+
+/**
+ * @param newOwnerAuthority
+ * @param recentOwnerAuthority
+ * @param extensions
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.recoverAccount = function (newOwnerAuthority, recentOwnerAuthority, extensions, callback) {
+  let params = {newOwnerAuthority, recentOwnerAuthority, extensions};
+  sseRequest.send("steem.broadcast.recoverAccount", params, callback);
+};
+
+/**
+ * @param firstBlock
+ * @param secondBlock
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.reportOverProduction= function (firstBlock, secondBlock, callback) {
+  let params = {firstBlock, secondBlock};
+  sseRequest.send("steem.broadcast.reportOverProduction", params, callback);
+};
+
+/**
+ * @param {string} accountToRecover
+ * @param newOwnerAuthority
+ * @param extensions
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.requestAccountRecovery= function (accountToRecover, newOwnerAuthority, extensions, callback) {
+  let params = {accountToRecover, newOwnerAuthority, extensions};
+  sseRequest.send("steem.broadcast.requestAccountRecovery", params, callback);
+};
+
+/**
+ * @param to
+ * @param agent
+ * @param who
+ * @param escrowId
+ * @param approve
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.escrowApprove= function (to, agent, who, escrowId, approve, callback) {
+  let params = {to, agent, who, escrowId, approve};
+  sseRequest.send("steem.broadcast.escrowApprove", params, callback);
+};
+
+/**
+ * @param toAccount
+ * @param percent
+ * @param autoVest
+ * @param {function} callback
+ */
+window.SteemSecure.broadcast.setWithdrawVestingRoute= function (toAccount, percent, autoVest, callback) {
+  let params = {toAccount, percent, autoVest};
+  sseRequest.send("steem.broadcast.setWithdrawVestingRoute", params, callback);
+};
+
+/**
+ * @param {string} to - Steem Account Name
+ * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
+ * @param {string} memo - additional transfer message
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.transfer = function (to, amount, memo, callback) {
+  let params = {to, amount, memo};
+  sseRequest.send("steem.broadcast.transfer", params, callback);
+};
+
+/**
+ * @param {string} to - Steem Account Name
+ * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.transferToVesting = function (to, amount, callback) {
+  let params = {to, amount};
+  sseRequest.send("steem.broadcast.transferToVesting", params, callback);
+};
+
+/**
+ * @param {string} author
+ * @param {string} permlink
+ * @param {number} weight - 1% equals to number 100
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.vote = function (author, permlink, weight, callback) {
+  let params = {author, permlink, weight};
+  sseRequest.send("steem.broadcast.vote", params, callback);
+};
+
+/**
+ * @param vestingShares
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.withdrawVesting = function (vestingShares, callback) {
+  let params = {vestingShares};
+  sseRequest.send("steem.broadcast.withdrawVesting", params, callback);
+};
+
+/**
+ * @param {string} url
+ * @param {string} blockSigningKey
+ * @param props
+ * @param fee
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.witnessUpdate = function (url, blockSigningKey, props, fee, callback) {
+  let params = {url, blockSigningKey, props, fee};
+  sseRequest.send("steem.broadcast.witnessUpdate", params, callback);
+};
+
+/**
+ * @param {string} toAccount
+ * @param withdrawn
+ * @param deposited
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.fillVestingWithdraw = function (toAccount, withdrawn, deposited, callback) {
+  let params = {toAccount, withdrawn, deposited};
+  sseRequest.send("steem.broadcast.fillVestingWithdraw", params, callback);
+};
+
+/**
+ * @param currentOrderid
+ * @param currentPays
+ * @param openOwner
+ * @param openOrderid
+ * @param openPays
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.fillOrder = function (currentOrderid, currentPays, openOwner, openOrderid, openPays, callback) {
+  let params = {currentOrderid, currentPays, openOwner, openOrderid, openPays};
+  sseRequest.send("steem.broadcast.fillOrder", params, callback);
+};
+
+/**
+ * @param {string} to
+ * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
+ * @param requestId
+ * @param {string} memo
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.fillTransferFromSavings = function (to, amount, requestId, memo, callback) {
+  let params = {to, amount, requestId, memo};
+  sseRequest.send("steem.broadcast.fillTransferFromSavings", params, callback);
+};
+
+/**
+ * @param {string} permlink
+ * @param payout
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.commentPayout = function (permlink, payout, callback) {
+  let params = {permlink, payout};
+  sseRequest.send("steem.broadcast.commentPayout", params, callback);
+};
+
+/**
+ * @param {string} to
+ * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
+ * @param {string}memo
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.transferToSavings = function (to, amount, memo, callback) {
+  let params = {to, amount, memo};
+  sseRequest.send("steem.broadcast.transferToSavings", params, callback);
+};
+
+/**
+ * @param {string} to
+ * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
+ * @param {string} memo
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.transferFromSavings = function (to, amount, memo, callback) {
+  let params = {to, amount, memo};
+  sseRequest.send("steem.broadcast.transferFromSavings", params, callback);
+};
+
+/**
+ * @param requestId
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.broadcast.cancelTransferFromSavings = function (requestId, callback) {
+  let params = {requestId};
+  sseRequest.send("steem.broadcast.cancelTransferFromSavings", params, callback);
+};
 
 
 /**
@@ -853,16 +1260,4 @@ window.SteemSecure.broadcast.prepareAndSignTransferTransaction = function (to, a
 window.SteemSecure.broadcast.sendSignedTransaction = function (signedTransaction, callback) {
   let params = {signedTransaction};
   sseRequest.send("steem.broadcast.broadcastSignedTransaction", params, callback);
-};
-
-/**
- * @param {string} to - Steem Account Name
- * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
- * @param {string} memo - additional transfer message
- * @param {function} callback
- * @returns {void}
- */
-window.SteemSecure.broadcast.transfer = function (to, amount, memo, callback) {
-  let params = {to, amount, memo};
-  sseRequest.send("steem.broadcast.transfer", params, callback);
 };
