@@ -6,6 +6,7 @@ window.SteemSecure = {};
 window.SteemSecure.api = {};
 window.SteemSecure.broadcast = {};
 window.SteemSecure.config = {};
+window.SteemSecure.formatter = {};
 
 /**
  * @param {object} options - object with steem-js library custom configuration
@@ -1240,7 +1241,6 @@ window.SteemSecure.broadcast.cancelTransferFromSavings = function (requestId, ca
   sseRequest.send("steem.broadcast.cancelTransferFromSavings", params, callback);
 };
 
-
 /**
  * @param {string} to - Steem Account Name
  * @param {string} amount - example: "1.000 SBD" or "1.000 STEEM". Remember about three decimal places!
@@ -1260,4 +1260,47 @@ window.SteemSecure.broadcast.prepareAndSignTransferTransaction = function (to, a
 window.SteemSecure.broadcast.sendSignedTransaction = function (signedTransaction, callback) {
   let params = {signedTransaction};
   sseRequest.send("steem.broadcast.broadcastSignedTransaction", params, callback);
+};
+
+/**
+ * @param {string} parentAuthor
+ * @param {string} parentPermlink
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.formatter.commentPermlink = function (parentAuthor, parentPermlink, callback) {
+  let params = {parentAuthor, parentPermlink};
+  sseRequest.send("steem.formatter.commentPermlink", params, callback);
+};
+
+/**
+ * @param {object} account
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.formatter.estimateAccountValue = function (account, callback) {
+  let params = {account};
+  sseRequest.send("steem.formatter.estimateAccountValue", params, callback);
+};
+
+/**
+ * @param {number} amount
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.formatter.reputation = function (amount, callback) {
+  let params = {amount};
+  sseRequest.send("steem.formatter.reputation", params, callback);
+};
+
+/**
+ * @param vestingShares
+ * @param totalVestingShares
+ * @param totalVestingFundSteem
+ * @param {function} callback
+ * @returns {void}
+ */
+window.SteemSecure.formatter.vestToSteem = function (vestingShares, totalVestingShares, totalVestingFundSteem, callback) {
+  let params = {vestingShares, totalVestingShares, totalVestingFundSteem};
+  sseRequest.send("steem.formatter.vestToSteem", params, callback);
 };

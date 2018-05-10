@@ -821,3 +821,43 @@ steem.broadcast.cancelTransferFromSavings(requestId, function(err, result) {
   console.log(err, result);
 });
 ```
+
+# Formatter
+
+### Comment Permlink
+```
+var parentAuthor = 'ned';
+var parentPermlink = 'a-selfie';
+steem.formatter.commentPermlink(parentAuthor, parentPermlink, function(err,commentPermlink){
+  console.log(commentPermlink);
+  // => 're-ned-a-selfie-20170621t080403765z'
+});
+```
+
+### Estimate Account Value
+```
+steem.formatter.estimateAccountValue(account, function(err,steemPower){
+  console.log(steemPower);
+);
+```
+
+### Reputation
+```
+steem.formatter.reputation(amount, function(err,reputation){
+console.log(reputation);
+});
+/**
+ *Example:
+*/
+steem.formatter.reputation(2684375104736, function(err,reputation){
+console.log(reputation);
+// => 56
+});
+```
+
+### Vest To Steem
+```
+var steemPower = steem.formatter.vestToSteem(vestingShares, totalVestingShares, totalVestingFundSteem, function(err,reputation){
+  console.log(steemPower);
+});
+```

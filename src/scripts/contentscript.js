@@ -1039,10 +1039,6 @@ extensionServer.on(
   }
 );
 
-
-
-
-
 extensionServer.on(
   "steem.broadcast.prepareAndSignTransferTransaction", function (params, eResponse) {
     PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
@@ -1071,5 +1067,33 @@ extensionServer.on(
     steem.api.broadcastTransactionSynchronousAsync(params.signedTransaction).then(function (result) {
       eResponse.send(result);
     });
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.commentPermlink", function (params, eResponse) {
+      let commentPermlink = steem.formatter.commentPermlink(params.parentAuthor, params.parentPermlink);
+        eResponse.send(commentPermlink);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.estimateAccountValue", function (params, eResponse) {
+      let steemPower = steem.formatter.estimateAccountValue(params.account);
+        eResponse.send(steemPower);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.reputation", function (params, eResponse) {
+      let reputation = steem.formatter.reputation(params.amount);
+        eResponse.send(reputation);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.vestToSteem", function (params, eResponse) {
+      let steemPower = steem.formatter.vestToSteem(params.vestingShares, params.totalVestingShares, params.totalVestingFundSteem);
+        eResponse.send(steemPower);
   }
 );
