@@ -33,7 +33,7 @@ window.SteemSecure.config.set = function (property, value, callback) {
  */
 window.SteemSecure.config.get = function (property, callback) {
   let params = {property};
-  sseRequest.send("steem.config.set", params, callback);
+  sseRequest.send("steem.config.get", params, callback);
 };
 
 /**
@@ -277,7 +277,7 @@ window.SteemSecure.api.getNextScheduledHardfork = function (callback) {
 };
 
 /**
- * @param {string} name
+ * @param {string} name - example: "post"
  * @param {function} callback
  */
 window.SteemSecure.api.getRewardFund = function (name, callback) {
@@ -287,7 +287,7 @@ window.SteemSecure.api.getRewardFund = function (name, callback) {
 
 /**
  * @param {string} account
- * @param from
+ * @param {number} from
  * @param {number} limit
  * @param {function} callback
  */

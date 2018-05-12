@@ -1,3 +1,5 @@
+![steemSecureLogo128.png](https://steemitimages.com/DQmSLHJ4GkoAUENEPy3Qq2ap4exdQNda2PEnbTzMem8p5h6/steemSecureLogo128.png)
+
 <div align="center">
   <h1>
     Steem Secure Login - Browsers Extension
@@ -11,7 +13,7 @@
   </p>
   <p>
     Extension injects into web page script which creates programming interface to interact with steem blockchain.
-    No calculation are being done in this script! Script communicates with extension which performs calculations.
+    No calculation are being done in injected script! Script communicates with extension which performs calculations.
     Web page javascript thread is being releived from  complex cryptographic computations.
   </p>
   <p>
@@ -61,7 +63,13 @@
   ```
   This line will send 1 STEEM to bartosz546 transaction signing proccess wil take place deep into the extension. 
   Browser does not have access to it.
-
+  
+  <p>
+  Extension extends 'window' property of the browser with SteemSecure interface, it moves all computatiations to another javascript thread relieving webpage javascript thread. 
+  After you install extension in your browser SteemSecure interface will be automatically added, you don't need to do anything more.
+  SteemSecure interface is similar to steem-js library interface, if you encounter problem with some method functionality you can safely look for similar problem
+  solution for steem-js method.
+  </p>
 </div>
 
 <div>
@@ -87,7 +95,9 @@ SteemSecure.config.set('address_prefix','STM');
 ```
 ### get
 ```
-SteemSecure.config.get('chain_id');
+SteemSecure.config.get('chain_id', function(err, res){
+  console.log(err, result);
+});
 ```
 
 ## Tags
