@@ -200,6 +200,14 @@ extensionServer.on(
 );
 
 extensionServer.on(
+  "steem.api.getChainProperties", function (params, eResponse) {
+    steem.api.getChainProperties(function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
   "steem.api.getFeedHistory", function (params, eResponse) {
     steem.api.getFeedHistory(function (err, res) {
       eResponse.send(res, err);
