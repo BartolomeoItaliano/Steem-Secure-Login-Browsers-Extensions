@@ -336,6 +336,718 @@ extensionServer.on(
 );
 
 extensionServer.on(
+  "steem.api.getOrderBook", function (params, eResponse) {
+    steem.api.getOrderBook(params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getOpenOrders", function (params, eResponse) {
+    steem.api.getOpenOrders(params.owner, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getLiquidityQueue", function (params, eResponse) {
+    steem.api.getLiquidityQueue(params.startAccount, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getTransactionHex", function (params, eResponse) {
+    steem.api.getTransactionHex(params.trx, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getTransaction", function (params, eResponse) {
+    steem.api.getTransaction(params.trxId, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getRequiredSignatures", function (params, eResponse) {
+    steem.api.getRequiredSignatures(params.trx, params.availableKeys, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getPotentialSignatures", function (params, eResponse) {
+    steem.api.getPotentialSignatures(params.trx, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.verifyAuthority", function (params, eResponse) {
+    steem.api.verifyAuthority(params.trx, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.verifyAccountAuthority", function (params, eResponse) {
+    steem.api.verifyAccountAuthority(params.nameOrId, params.signers, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getActiveVotes", function (params, eResponse) {
+    steem.api.getActiveVotes(params.author, params.permlink, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getAccountVotes", function (params, eResponse) {
+    steem.api.getAccountVotes(params.voter, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getContent", function (params, eResponse) {
+    steem.api.getContent(params.author, params.permlink, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getContentReplies", function (params, eResponse) {
+    steem.api.getContentReplies(params.author, params.permlink, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getDiscussionsByAuthorBeforeDate", function (params, eResponse) {
+    steem.api.getDiscussionsByAuthorBeforeDate(params.author, params.startPermlink, params.beforeDate, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getRepliesByLastUpdate", function (params, eResponse) {
+    steem.api.getRepliesByLastUpdate(params.startAuthor, params.startPermlink, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getWitnesses", function (params, eResponse) {
+    steem.api.getWitnesses(params.witnessIds, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getWitnessByAccount", function (params, eResponse) {
+    steem.api.getWitnessByAccount(params.accountName, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getWitnessesByVote", function (params, eResponse) {
+    steem.api.getWitnessesByVote(params.from, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.lookupWitnessAccounts", function (params, eResponse) {
+    steem.api.lookupWitnessAccounts(params.lowerBoundName, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getWitnessCount", function (params, eResponse) {
+    steem.api.getWitnessCount(function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getActiveWitnesses", function (params, eResponse) {
+    steem.api.getActiveWitnesses(function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getMinerQueue", function (params, eResponse) {
+    steem.api.getMinerQueue(function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getFollowers", function (params, eResponse) {
+    steem.api.getFollowers(params.following, params.startFollower, params.followType, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getFollowing", function (params, eResponse) {
+    steem.api.getFollowing(params.follower, params.startFollowing, params.followType, params.limit, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.getFollowCount", function (params, eResponse) {
+    steem.api.getFollowCount(params.account, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.broadcastTransactionSynchronous", function (params, eResponse) {
+    steem.api.broadcastTransactionSynchronous(params.trx, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.api.broadcastBlock", function (params, eResponse) {
+    steem.api.broadcastBlock(params.b, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.accountCreate", function (params, eResponse) {
+    steem.broadcast.accountCreate(params.wif, params.fee, params.creator, params.newAccountName, params.ownerKey, params.activeKey, params.postingKey, params.memoKey, params.jsonMetadata, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.accountCreateWithDelegation", function (params, eResponse) {
+    steem.broadcast.accountCreateWithDelegation(params.wif, params.fee, params.delegation, params.creator, params.newAccountName, params.ownerKey, params.activeKey, params.postingKey, params.memoKey, params.jsonMetadata, params.extensions, function (err, res) {
+      eResponse.send(res, err);
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.delegateVestingShares", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.delegateVestingShares(activeWif, steemAccountName, params.delegatee, params.vesting_shares, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.accountUpdate", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.accountUpdate(activeWif, steemAccountName, params.ownerKey, params.activeKey, params.postingKey, params.memoKey, params.jsonMetadata, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.accountWitnessProxy", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.accountWitnessProxy(activeWif, steemAccountName, params.proxy, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.accountWitnessVote", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.accountWitnessVote(activeWif, steemAccountName, params.witness, params.approve, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.challengeAuthority", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.challengeAuthority(activeWif, steemAccountName, params.challenged, params.requireOwner, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.changeRecoveryAccount", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.changeRecoveryAccount(activeWif, steemAccountName, params.newRecoveryAccount, params.extensions, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.comment", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.comment(postingWif, params.parentAuthor, params.parentPermlink, steemAccountName, params.permlink, params.title, params.body, params.jsonMetadata, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.commentOptions", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.commentOptions(postingWif, steemAccountName, params.permlink, params.maxAcceptedPayout, params.percentSteemDollars, params.allowVotes, params.allowCurationRewards, params.extensions, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.commentPayout", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.commentReward", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.commentReward(postingWif, steemAccountName, params.permlink, params.sbdPayout, params.vestingPayout, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.convert", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.convert(postingWif, steemAccountName, params.requestid, params.amount, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.curateReward", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.curateReward(postingWif, steemAccountName, params.reward, params.commentAuthor, params.commentPermlink, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.custom", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.custom(activeWif, steemAccountName, params.requiredAuths, params.id, params.data, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.customBinary", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.customBinary(activeWif, params.id, params.data, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.customJson", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.customJson(activeWif, params.requiredAuths, params.requiredPostingAuths, params.id, params.json, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.deleteComment", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.deleteComment(postingWif, steemAccountName, params.permlink, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.escrowDispute", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.escrowDispute(activeWif, steemAccountName, params.to, params.agent, params.who, params.escrowId, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.escrowRelease", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.escrowRelease(activeWif, steemAccountName, params.to, params.agent, params.who, params.receiver, params.escrowId, params.sbdAmount, params.steemAmount, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.escrowTransfer", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.escrowTransfer(activeWif, steemAccountName, params.to, params.agent, params.escrowId, params.sbdAmount, params.steemAmount, params.fee, params.ratificationDeadline, params.escrowExpiration, params.jsonMeta, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.feedPublish", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.feedPublish(activeWif, steemAccountName, params.exchangeRate, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.pow2", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.pow2(activeWif, params.work, params.newOwnerKey, params.props, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillConvertRequest", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.fillConvertRequest(activeWif, steemAccountName, params.requestid, params.amountIn, params.amountOut, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillOrder", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.fillOrder(activeWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillVestingWithdraw", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.fillVestingWithdraw(activeWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.interest", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.interest(activeWif, steemAccountName, params.interest, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.limitOrderCancel", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.limitOrderCancel(activeWif, steemAccountName, params.orderid, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.limitOrderCreate", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.limitOrderCreate(postingWif, steemAccountName, params.orderid, params.amountToSell, params.minToReceive, params.fillOrKill, params.expiration, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.limitOrderCreate2", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.limitOrderCreate2(postingWif, steemAccountName, params.orderid, params.amountToSell, params.minToReceive, params.fillOrKill, params.expiration, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.liquidityReward", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.liquidityReward(postingWif, steemAccountName, params.payout, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.pow", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.pow(postingWif, steemAccountName, params.input, params.signature, params.work, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.proveAuthority", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.proveAuthority(postingWif, steemAccountName, params.requireOwner, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.recoverAccount", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.recoverAccount(postingWif, steemAccountName, params.newOwnerAuthority, params.recentOwnerAuthority, params.extensions, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.reportOverProduction", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.reportOverProduction(postingWif, steemAccountName, params.firstBlock, params.secondBlock, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.requestAccountRecovery", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.requestAccountRecovery(activeWif, steemAccountName, params.accountToRecover, params.newOwnerAuthority, params.extensions, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.escrowApprove", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.escrowApprove(activeWif, steemAccountName, params.to, params.agent, params.who, params.escrowId, params.approve, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.setWithdrawVestingRoute", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.setWithdrawVestingRoute(activeWif, steemAccountName, params.toAccount, params.percent, params.autoVest, function (err, res) {
+        eResponse.send(res, err);
+      });
+    });
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.transfer", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.transfer(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.transferToVesting", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.transferToVesting(activeWif, steemAccountName, params.to, params.amount, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.vote", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.vote(postingWif, steemAccountName, params.author, params.permlink, params.weight, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.withdrawVesting", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.withdrawVesting(postingWif, steemAccountName, params.vestingShares, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.witnessUpdate", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.witnessUpdate(postingWif, steemAccountName, params.url, params.blockSigningKey, params.props, params.fee, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillVestingWithdraw", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.fillVestingWithdraw(postingWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillOrder", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.fillOrder(postingWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.fillTransferFromSavings", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.fillTransferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.requestId, params.memo, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.commentPayout", function (params, eResponse) {
+    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+      steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.transferToSavings", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.transferToSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.transferFromSavings", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.transferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
+  "steem.broadcast.cancelTransferFromSavings", function (params, eResponse) {
+    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+      steem.broadcast.cancelTransferFromSavings(activeWif, steemAccountName, params.requestId, function (err, res) {
+        eResponse.send(res, err);
+      });
+    })
+  }
+);
+
+extensionServer.on(
   "steem.broadcast.prepareAndSignTransferTransaction", function (params, eResponse) {
     PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
       let tx = {
@@ -367,11 +1079,29 @@ extensionServer.on(
 );
 
 extensionServer.on(
-  "steem.broadcast.transfer", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.transfer(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+  "steem.formatter.commentPermlink", function (params, eResponse) {
+      let commentPermlink = steem.formatter.commentPermlink(params.parentAuthor, params.parentPermlink);
+        eResponse.send(commentPermlink);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.estimateAccountValue", function (params, eResponse) {
+      let steemPower = steem.formatter.estimateAccountValue(params.account);
+        eResponse.send(steemPower);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.reputation", function (params, eResponse) {
+      let reputation = steem.formatter.reputation(params.amount);
+        eResponse.send(reputation);
+  }
+);
+
+extensionServer.on(
+  "steem.formatter.vestToSteem", function (params, eResponse) {
+      let steemPower = steem.formatter.vestToSteem(params.vestingShares, params.totalVestingShares, params.totalVestingFundSteem);
+        eResponse.send(steemPower);
   }
 );
