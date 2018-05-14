@@ -1,4 +1,4 @@
-![steemSecureLogo128.png](https://steemitimages.com/DQmSLHJ4GkoAUENEPy3Qq2ap4exdQNda2PEnbTzMem8p5h6/steemSecureLogo128.png)
+![SteemSecureLoginGitHubHeader.png](https://steemitimages.com/DQmPYG42Mc9MBmsirUJpnhPREs3i7314EWjDPMkMYv1WieK/SteemSecureLoginGitHubHeader.png)
 
 <div align="center">
   <h1>
