@@ -224,55 +224,55 @@ SteemSecure.api.getRecentCategories(after, limit, function(err, result) {
 
 ### Get Config
 ```
-steem.api.getConfig(function(err, result) {
+SteemSecure.api.getConfig(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Dynamic Global Properties
 ```
-steem.api.getDynamicGlobalProperties(function(err, result) {
+SteemSecure.api.getDynamicGlobalProperties(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Chain Properties
 ```
-steem.api.getChainProperties(function(err, result) {
+SteemSecure.api.getChainProperties(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Feed History
 ```
-steem.api.getFeedHistory(function(err, result) {
+SteemSecure.api.getFeedHistory(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Current Median History Price
 ```
-steem.api.getCurrentMedianHistoryPrice(function(err, result) {
+SteemSecure.api.getCurrentMedianHistoryPrice(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Hardfork Version
 ```
-steem.api.getHardforkVersion(function(err, result) {
+SteemSecure.api.getHardforkVersion(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Next Scheduled Hardfork
 ```
-steem.api.getNextScheduledHardfork(function(err, result) {
+SteemSecure.api.getNextScheduledHardfork(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Reward Fund
 ```
-steem.api.getRewardFund(name, function(err, result) {
+SteemSecure.api.getRewardFund(name, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Vesting Delegations
 ```
-steem.api.getVestingDelegations(account, from, limit, function(err, result) {
+SteemSecure.api.getVestingDelegations(account, from, limit, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -281,7 +281,7 @@ steem.api.getVestingDelegations(account, from, limit, function(err, result) {
 
 ### Get Key References
 ```
-steem.api.getKeyReferences(key, function(err, result) {
+SteemSecure.api.getKeyReferences(key, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -290,55 +290,55 @@ steem.api.getKeyReferences(key, function(err, result) {
 
 ### Get Accounts
 ```
-steem.api.getAccounts(names, function(err, result) {
+SteemSecure.api.getAccounts(names, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Account References
 ```
-steem.api.getAccountReferences(accountId, function(err, result) {
+SteemSecure.api.getAccountReferences(accountId, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Lookup Account Names
 ```
-steem.api.lookupAccountNames(accountNames, function(err, result) {
+SteemSecure.api.lookupAccountNames(accountNames, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Lookup Accounts
 ```
-steem.api.lookupAccounts(lowerBoundName, limit, function(err, result) {
+SteemSecure.api.lookupAccounts(lowerBoundName, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Account Count
 ```
-steem.api.getAccountCount(function(err, result) {
+SteemSecure.api.getAccountCount(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Conversion Requests
 ```
-steem.api.getConversionRequests(accountName, function(err, result) {
+SteemSecure.api.getConversionRequests(accountName, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Account History
 ```
-steem.api.getAccountHistory(account, from, limit, function(err, result) {
+SteemSecure.api.getAccountHistory(account, from, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Owner History
 ```
-steem.api.getOwnerHistory(account, function(err, result) {
+SteemSecure.api.getOwnerHistory(account, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Recovery Request
 ```
-steem.api.getRecoveryRequest(account, function(err, result) {
+SteemSecure.api.getRecoveryRequest(account, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -347,19 +347,19 @@ steem.api.getRecoveryRequest(account, function(err, result) {
 
 ### Get Order Book
 ```
-steem.api.getOrderBook(limit, function(err, result) {
+SteemSecure.api.getOrderBook(limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Open Orders
 ```
-steem.api.getOpenOrders(owner, function(err, result) {
+SteemSecure.api.getOpenOrders(owner, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Liquidity Queue
 ```
-steem.api.getLiquidityQueue(startAccount, limit, function(err, result) {
+SteemSecure.api.getLiquidityQueue(startAccount, limit, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -368,37 +368,37 @@ steem.api.getLiquidityQueue(startAccount, limit, function(err, result) {
 
 ### Get Transaction Hex
 ```
-steem.api.getTransactionHex(trx, function(err, result) {
+SteemSecure.api.getTransactionHex(trx, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Transaction
 ```
-steem.api.getTransaction(trxId, function(err, result) {
+SteemSecure.api.getTransaction(trxId, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Required Signatures
 ```
-steem.api.getRequiredSignatures(trx, availableKeys, function(err, result) {
+SteemSecure.api.getRequiredSignatures(trx, availableKeys, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Potential Signatures
 ```
-steem.api.getPotentialSignatures(trx, function(err, result) {
+SteemSecure.api.getPotentialSignatures(trx, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Verify Authority
 ```
-steem.api.verifyAuthority(trx, function(err, result) {
+SteemSecure.api.verifyAuthority(trx, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Verify Account Authority
 ```
-steem.api.verifyAccountAuthority(nameOrId, signers, function(err, result) {
+SteemSecure.api.verifyAccountAuthority(nameOrId, signers, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -407,13 +407,13 @@ steem.api.verifyAccountAuthority(nameOrId, signers, function(err, result) {
 
 ### Get Active Votes
 ```
-steem.api.getActiveVotes(author, permlink, function(err, result) {
+SteemSecure.api.getActiveVotes(author, permlink, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Account Votes
 ```
-steem.api.getAccountVotes(voter, function(err, result) {
+SteemSecure.api.getAccountVotes(voter, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -423,25 +423,25 @@ steem.api.getAccountVotes(voter, function(err, result) {
 
 ### Get Content
 ```
-steem.api.getContent(author, permlink, function(err, result) {
+SteemSecure.api.getContent(author, permlink, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Content Replies
 ```
-steem.api.getContentReplies(author, permlink, function(err, result) {
+SteemSecure.api.getContentReplies(author, permlink, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Discussions By Author Before Date
 ```
-steem.api.getDiscussionsByAuthorBeforeDate(author, startPermlink, beforeDate, limit, function(err, result) {
+SteemSecure.api.getDiscussionsByAuthorBeforeDate(author, startPermlink, beforeDate, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Replies By Last Update
 ```
-steem.api.getRepliesByLastUpdate(startAuthor, startPermlink, limit, function(err, result) {
+SteemSecure.api.getRepliesByLastUpdate(startAuthor, startPermlink, limit, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -451,43 +451,43 @@ steem.api.getRepliesByLastUpdate(startAuthor, startPermlink, limit, function(err
 
 ### Get Witnesses
 ```
-steem.api.getWitnesses(witnessIds, function(err, result) {
+SteemSecure.api.getWitnesses(witnessIds, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Witness By Account
 ```
-steem.api.getWitnessByAccount(accountName, function(err, result) {
+SteemSecure.api.getWitnessByAccount(accountName, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Witnesses By Vote
 ```
-steem.api.getWitnessesByVote(from, limit, function(err, result) {
+SteemSecure.api.getWitnessesByVote(from, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Lookup Witness Accounts
 ```
-steem.api.lookupWitnessAccounts(lowerBoundName, limit, function(err, result) {
+SteemSecure.api.lookupWitnessAccounts(lowerBoundName, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Witness Count
 ```
-steem.api.getWitnessCount(function(err, result) {
+SteemSecure.api.getWitnessCount(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Active Witnesses
 ```
-steem.api.getActiveWitnesses(function(err, result) {
+SteemSecure.api.getActiveWitnesses(function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Miner Queue
 ```
-steem.api.getMinerQueue(function(err, result) {
+SteemSecure.api.getMinerQueue(function(err, result) {
   console.log(err, result);
 });
 ```
@@ -496,19 +496,19 @@ steem.api.getMinerQueue(function(err, result) {
 
 ### Get Followers
 ```
-steem.api.getFollowers(following, startFollower, followType, limit, function(err, result) {
+SteemSecure.api.getFollowers(following, startFollower, followType, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Following
 ```
-steem.api.getFollowing(follower, startFollowing, followType, limit, function(err, result) {
+SteemSecure.api.getFollowing(follower, startFollowing, followType, limit, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Get Follow Count
 ```
-steem.api.getFollowCount(account, function(err, result) {
+SteemSecure.api.getFollowCount(account, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -517,13 +517,13 @@ steem.api.getFollowCount(account, function(err, result) {
 
 ### Broadcast Transaction Synchronous
 ```
-steem.api.broadcastTransactionSynchronous(trx, function(err, result) {
+SteemSecure.api.broadcastTransactionSynchronous(trx, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Broadcast Block
 ```
-steem.api.broadcastBlock(b, function(err, result) {
+SteemSecure.api.broadcastBlock(b, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -532,302 +532,302 @@ steem.api.broadcastBlock(b, function(err, result) {
 
 ### Account Create
 ```
-steem.broadcast.accountCreate(wif, fee, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, function(err, result) {
+SteemSecure.broadcast.accountCreate(wif, fee, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Account Create With Delegation
 ```
-steem.broadcast.accountCreateWithDelegation(wif, fee, delegation, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, extensions, function(err, result) {
+SteemSecure.broadcast.accountCreateWithDelegation(wif, fee, delegation, creator, newAccountName, owner, active, posting, memoKey, jsonMetadata, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Delegate Vesting Shares
 ```
-steem.broadcast.delegateVestingShares(delegatee, vesting_shares, function(err, result) {
+SteemSecure.broadcast.delegateVestingShares(delegatee, vesting_shares, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Account Update
 ```
-steem.broadcast.accountUpdate(owner, active, posting, memoKey, jsonMetadata, function(err, result) {
+SteemSecure.broadcast.accountUpdate(owner, active, posting, memoKey, jsonMetadata, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Account Witness Proxy
 ```
-steem.broadcast.accountWitnessProxy(wif, account, proxy, function(err, result) {
+SteemSecure.broadcast.accountWitnessProxy(proxy, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Account Witness Vote
 ```
-steem.broadcast.accountWitnessVote(witness, approve, function(err, result) {
+SteemSecure.broadcast.accountWitnessVote(witness, approve, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Challenge Authority
 ```
-steem.broadcast.challengeAuthority(challenged, requireOwner, function(err, result) {
+SteemSecure.broadcast.challengeAuthority(challenged, requireOwner, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Change Recovery Account
 ```
-steem.broadcast.changeRecoveryAccount(wif, accountToRecover, newRecoveryAccount, extensions, function(err, result) {
+SteemSecure.broadcast.changeRecoveryAccount(accountToRecover, newRecoveryAccount, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
 
 ### Comment
 ```
-steem.broadcast.comment(wif, parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, function(err, result) {
+SteemSecure.broadcast.comment(parentAuthor, parentPermlink, permlink, title, body, jsonMetadata, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Comment Options
 ```
-steem.broadcast.commentOptions(wif, author, permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions, function(err, result) {
+SteemSecure.broadcast.commentOptions(permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Comment Payout
 ```
-steem.broadcast.commentPayout(permlink, payout, function(err, result) {
+SteemSecure.broadcast.commentPayout(permlink, payout, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Comment Reward
 ```
-steem.broadcast.commentReward(permlink, sbdPayout, vestingPayout, function(err, result) {
+SteemSecure.broadcast.commentReward(permlink, sbdPayout, vestingPayout, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Convert
 ```
-steem.broadcast.convert(requestid, amount, function(err, result) {
+SteemSecure.broadcast.convert(requestid, amount, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Curate Reward
 ```
-steem.broadcast.curateReward(reward, commentAuthor, commentPermlink, function(err, result) {
+SteemSecure.broadcast.curateReward(reward, commentAuthor, commentPermlink, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Custom
 ```
-steem.broadcast.custom(requiredAuths, id, data, function(err, result) {
+SteemSecure.broadcast.custom(requiredAuths, id, data, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Custom Binary
 ```
-steem.broadcast.customBinary(id, data, function(err, result) {
+SteemSecure.broadcast.customBinary(id, data, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Custom Json
 ```
-steem.broadcast.customJson(requiredAuths, requiredPostingAuths, id, json, function(err, result) {
+SteemSecure.broadcast.customJson(requiredAuths, requiredPostingAuths, id, json, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Delete Comment
 ```
-steem.broadcast.deleteComment(permlink, function(err, result) {
+SteemSecure.broadcast.deleteComment(permlink, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Escrow Dispute
 ```
-steem.broadcast.escrowDispute(to, agent, who, escrowId, function(err, result) {
+SteemSecure.broadcast.escrowDispute(to, agent, who, escrowId, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Escrow Release
 ```
-steem.broadcast.escrowRelease(to, agent, who, receiver, escrowId, sbdAmount, steemAmount, function(err, result) {
+SteemSecure.broadcast.escrowRelease(to, agent, who, receiver, escrowId, sbdAmount, steemAmount, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Escrow Transfer
 ```
-steem.broadcast.escrowTransfer(to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, function(err, result) {
+SteemSecure.broadcast.escrowTransfer(to, agent, escrowId, sbdAmount, steemAmount, fee, ratificationDeadline, escrowExpiration, jsonMeta, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Feed Publish
 ```
-steem.broadcast.feedPublish(exchangeRate, function(err, result) {
+SteemSecure.broadcast.feedPublish(exchangeRate, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Pow2
 ```
-steem.broadcast.pow2(wif, work, newOwnerKey, props, function(err, result) {
+SteemSecure.broadcast.pow2(work, newOwnerKey, props, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Convert Request
 ```
-steem.broadcast.fillConvertRequest(wif, owner, requestid, amountIn, amountOut, function(err, result) {
+SteemSecure.broadcast.fillConvertRequest(requestid, amountIn, amountOut, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Order
 ```
-steem.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
+SteemSecure.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Vesting Withdraw
 ```
-steem.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
+SteemSecure.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Interest
 ```
-steem.broadcast.interest(wif, owner, interest, function(err, result) {
+SteemSecure.broadcast.interest(interest, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Limit Order Cancel
 ```
-steem.broadcast.limitOrderCancel(orderid, function(err, result) {
+SteemSecure.broadcast.limitOrderCancel(orderid, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Limit Order Create
 ```
-steem.broadcast.limitOrderCreate(orderid, amountToSell, minToReceive, fillOrKill, expiration, function(err, result) {
+SteemSecure.broadcast.limitOrderCreate(orderid, amountToSell, minToReceive, fillOrKill, expiration, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Limit Order Create2
 ```
-steem.broadcast.limitOrderCreate2(orderid, amountToSell, exchangeRate, fillOrKill, expiration, function(err, result) {
+SteemSecure.broadcast.limitOrderCreate2(orderid, amountToSell, exchangeRate, fillOrKill, expiration, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Liquidity Reward
 ```
-steem.broadcast.liquidityReward(payout, function(err, result) {
+SteemSecure.broadcast.liquidityReward(payout, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Pow
 ```
-steem.broadcast.pow(wif, worker, input, signature, work, function(err, result) {
+SteemSecure.broadcast.pow(worker, input, signature, work, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Prove Authority
 ```
-steem.broadcast.proveAuthority(wif, challenged, requireOwner, function(err, result) {
+SteemSecure.broadcast.proveAuthority(requireOwner, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Recover Account
 ```
-steem.broadcast.recoverAccount(newOwnerAuthority, recentOwnerAuthority, extensions, function(err, result) {
+SteemSecure.broadcast.recoverAccount(newOwnerAuthority, recentOwnerAuthority, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Report Over Production
 ```
-steem.broadcast.reportOverProduction(firstBlock, secondBlock, function(err, result) {
+SteemSecure.broadcast.reportOverProduction(firstBlock, secondBlock, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Request Account Recovery
 ```
-steem.broadcast.requestAccountRecovery(accountToRecover, newOwnerAuthority, extensions, function(err, result) {
+SteemSecure.broadcast.requestAccountRecovery(accountToRecover, newOwnerAuthority, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Escrow Approve
 ```
-steem.broadcast.escrowApprove(to, agent, who, escrowId, approve, function(err, result) {
+SteemSecure.broadcast.escrowApprove(to, agent, who, escrowId, approve, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Set Withdraw Vesting Route
 ```
-steem.broadcast.setWithdrawVestingRoute(toAccount, percent, autoVest, function(err, result) {
+SteemSecure.broadcast.setWithdrawVestingRoute(toAccount, percent, autoVest, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Transfer
 ```
-steem.broadcast.transfer(to, amount, memo, function(err, result) {
+SteemSecure.broadcast.transfer(to, amount, memo, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Transfer To Vesting
 ```
-steem.broadcast.transferToVesting(to, amount, function(err, result) {
+SteemSecure.broadcast.transferToVesting(to, amount, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Vote
 ```
-steem.broadcast.vote(author, permlink, weight, function(err, result) {
+SteemSecure.broadcast.vote(author, permlink, weight, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Withdraw Vesting
 ```
-steem.broadcast.withdrawVesting(vestingShares, function(err, result) {
+SteemSecure.broadcast.withdrawVesting(vestingShares, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Witness Update
 ```
-steem.broadcast.witnessUpdate(url, blockSigningKey, props, fee, function(err, result) {
+SteemSecure.broadcast.witnessUpdate(url, blockSigningKey, props, fee, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Vesting Withdraw
 ```
-steem.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
+SteemSecure.broadcast.fillVestingWithdraw(toAccount, withdrawn, deposited, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Order
 ```
-steem.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
+SteemSecure.broadcast.fillOrder(currentOrderid, currentPays, openOwner, openOrderid, openPays, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Fill Transfer From Savings
 ```
-steem.broadcast.fillTransferFromSavings(wif, from, to, amount, requestId, memo, function(err, result) {
+SteemSecure.broadcast.fillTransferFromSavings(to, amount, requestId, memo, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Comment Payout
 ```
-steem.broadcast.commentPayout(wif, author, permlink, payout, function(err, result) {
+SteemSecure.broadcast.commentPayout(permlink, payout, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Transfer To Savings
 ```
-steem.broadcast.transferToSavings(wif, from, to, amount, memo, function(err, result) {
+SteemSecure.broadcast.transferToSavings(to, amount, memo, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Transfer From Savings
 ```
-steem.broadcast.transferFromSavings(wif, from, requestId, to, amount, memo, function(err, result) {
+SteemSecure.broadcast.transferFromSavings(requestId, to, amount, memo, function(err, result) {
   console.log(err, result);
 });
 ```
 ### Cancel Transfer From Savings
 ```
-steem.broadcast.cancelTransferFromSavings(requestId, function(err, result) {
+SteemSecure.broadcast.cancelTransferFromSavings(requestId, function(err, result) {
   console.log(err, result);
 });
 ```
@@ -846,20 +846,20 @@ steem.formatter.commentPermlink(parentAuthor, parentPermlink, function(err,comme
 
 ### Estimate Account Value
 ```
-steem.formatter.estimateAccountValue(account, function(err,steemPower){
+SteemSecure.formatter.estimateAccountValue(account, function(err,steemPower){
   console.log(steemPower);
 );
 ```
 
 ### Reputation
 ```
-steem.formatter.reputation(amount, function(err,reputation){
+SteemSecure.formatter.reputation(amount, function(err,reputation){
 console.log(reputation);
 });
 /**
  *Example:
 */
-steem.formatter.reputation(2684375104736, function(err,reputation){
+SteemSecure.formatter.reputation(2684375104736, function(err,reputation){
 console.log(reputation);
 // => 56
 });
@@ -867,7 +867,7 @@ console.log(reputation);
 
 ### Vest To Steem
 ```
-var steemPower = steem.formatter.vestToSteem(vestingShares, totalVestingShares, totalVestingFundSteem, function(err,reputation){
+var steemPower = SteemSecure.formatter.vestToSteem(vestingShares, totalVestingShares, totalVestingFundSteem, function(err,reputation){
   console.log(steemPower);
 });
 ```
