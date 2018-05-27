@@ -1,5 +1,5 @@
-import {DomainGetter} from "./DomainGetter";
-import ext from "./utils/ext";
+import {DomainGetter} from "../utils/DomainGetter";
+import ext from "../utils/ext";
 
 /**
  * Webpages doesn't have access to data stored with this manager

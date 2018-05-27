@@ -3,13 +3,15 @@ import * as bluebird from "bluebird";
 import {ExtensionServer} from "./ExtensionServer";
 import {PrivateDataManager} from "./PrivateDataManager";
 import {MessagesToEventsTransformer} from "./MessagesToEventsTransformer";
+import {ConfirmationManager} from "./ConfirmationManager";
 
 let s = document.createElement('script');
-s.src = chrome.extension.getURL('scripts/steemSecureSteemJsInterface.js');
+s.src = chrome.extension.getURL('scripts/injectedScripts/steemSecureSteemJsInterface.js');
 (document.head || document.documentElement).appendChild(s);
 
 new MessagesToEventsTransformer();
 const extensionServer = new ExtensionServer();
+const confirmationManager = new ConfirmationManager();
 
 extensionServer.on(
   "SteemSecure.authentication.isUserLoggedIn", function (params, eResponse) {
@@ -943,10 +945,17 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.transfer", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.transfer(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
-        eResponse.send(res, err);
-      });
+    confirmationManager.askForTransfer(params, function (allowed) {
+      if(allowed){
+        PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+          steem.broadcast.transfer(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+            eResponse.send(res, err);
+          });
+        })
+      }
+      else{
+        eResponse.send(null, new Error("Operation not Permitted by user!"));
+      }
     })
   }
 );

@@ -1,4 +1,4 @@
-import ext from "./utils/ext";
+import ext from "../utils/ext";
 
 export class MessagesToEventsTransformer{
   constructor(){

@@ -22,7 +22,7 @@ var manifest = {
     "background": {
       "scripts": [
         "scripts/livereload.js",
-        "scripts/background.js"
+        "scripts/backgroundScripts/background.js"
       ]
     }
   },
@@ -127,12 +127,13 @@ function mergeAll(dest) {
 
 function buildJS(target) {
   const files = [
-    'background.js',
-    'contentscript.js',
+    'backgroundScripts/background.js',
+    'contentScripts/contentscript.js',
     'options.js',
-    'popup.js',
+    'popupScripts/LoginPopup.js',
+    'confirmationPopupScripts/ConfirmationPopup.js',
     'livereload.js',
-    'steemSecureSteemJsInterface.js'
+    'injectedScripts/steemSecureSteemJsInterface.js'
   ]
 
   let tasks = files.map( file => {

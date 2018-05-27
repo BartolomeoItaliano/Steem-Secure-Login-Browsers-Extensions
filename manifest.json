@@ -10,7 +10,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/background.js"
+      "scripts/backgroundScripts/background.js"
     ]
   },
   "permissions": [
@@ -24,7 +24,9 @@
   },
   "web_accessible_resources": [
     "icons/steemSecureLogo128.png",
-    "scripts/steemSecureSteemJsInterface.js"
+    "scripts/injectedScripts/steemSecureSteemJsInterface.js",
+    "src/ConfirmationPopup.html",
+    "src/scripts/confirmationPopupScripts/ConfirmationPopup.js"
   ],
   "content_scripts": [
     {
@@ -33,7 +35,7 @@
         "https://*/*"
       ],
       "js": [
-        "scripts/contentscript.js"
+        "scripts/contentScripts/contentscript.js"
       ],
       "run_at": "document_end",
       "all_frames": false
@@ -49,7 +51,7 @@
       "128":"icons/steemSecureLogo128.png"
     },
     "default_title": "Steem Secure Login",
-    "default_popup": "popup.html"
+    "default_popup": "LoginPopup.html"
   }
 }
 

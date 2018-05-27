@@ -1,7 +1,7 @@
 import * as steem from "steem";
-import * as ext from "./utils/ext";
-import {PrivateDataModel} from "./PrivateDataModel";
-import {PrivateDataManager} from "./PrivateDataManager";
+import * as ext from "../utils/ext";
+import {PrivateDataModel} from "../utils/PrivateDataModel";
+import {PrivateDataManager} from "../contentScripts/PrivateDataManager";
 
 export class LoginPopup {
 
@@ -152,3 +152,7 @@ export class LoginPopup {
     });
   }
 }
+
+window.onload = function () {
+  new LoginPopup();
+};
