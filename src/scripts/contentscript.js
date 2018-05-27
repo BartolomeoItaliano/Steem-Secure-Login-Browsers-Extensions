@@ -2,13 +2,27 @@ import * as steem from "steem";
 import * as bluebird from "bluebird";
 import {ExtensionServer} from "./ExtensionServer";
 import {PrivateDataManager} from "./PrivateDataManager";
+import {MessagesToEventsTransformer} from "./MessagesToEventsTransformer";
 
 let s = document.createElement('script');
 s.src = chrome.extension.getURL('scripts/steemSecureSteemJsInterface.js');
 (document.head || document.documentElement).appendChild(s);
 
-
+new MessagesToEventsTransformer();
 const extensionServer = new ExtensionServer();
+
+extensionServer.on(
+  "SteemSecure.authentication.isUserLoggedIn", function (params, eResponse) {
+    PrivateDataManager.getPrivateDataForDomain(function (privateDataModel) {
+      if (privateDataModel) {
+        eResponse.send({isLoggedIn: true, steemAccountName: privateDataModel.steemAccountName});
+      }
+      else {
+        eResponse.send({isLoggedIn: false});
+      }
+    });
+  }
+);
 
 extensionServer.on(
   "steem.api.setOptions", function (params, eResponse) {
@@ -1080,28 +1094,28 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.formatter.commentPermlink", function (params, eResponse) {
-      let commentPermlink = steem.formatter.commentPermlink(params.parentAuthor, params.parentPermlink);
-        eResponse.send(commentPermlink);
+    let commentPermlink = steem.formatter.commentPermlink(params.parentAuthor, params.parentPermlink);
+    eResponse.send(commentPermlink);
   }
 );
 
 extensionServer.on(
   "steem.formatter.estimateAccountValue", function (params, eResponse) {
-      let steemPower = steem.formatter.estimateAccountValue(params.account);
-        eResponse.send(steemPower);
+    let steemPower = steem.formatter.estimateAccountValue(params.account);
+    eResponse.send(steemPower);
   }
 );
 
 extensionServer.on(
   "steem.formatter.reputation", function (params, eResponse) {
-      let reputation = steem.formatter.reputation(params.amount);
-        eResponse.send(reputation);
+    let reputation = steem.formatter.reputation(params.amount);
+    eResponse.send(reputation);
   }
 );
 
 extensionServer.on(
   "steem.formatter.vestToSteem", function (params, eResponse) {
-      let steemPower = steem.formatter.vestToSteem(params.vestingShares, params.totalVestingShares, params.totalVestingFundSteem);
-        eResponse.send(steemPower);
+    let steemPower = steem.formatter.vestToSteem(params.vestingShares, params.totalVestingShares, params.totalVestingFundSteem);
+    eResponse.send(steemPower);
   }
 );

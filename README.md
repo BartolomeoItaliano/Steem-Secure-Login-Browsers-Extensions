@@ -81,6 +81,40 @@
   
 </div>
 
+## SteemSecure Authentication
+These methods let you listen on moment when the user login or logout from the extension
+### Moment when the users sucessfully submit form
+```
+SteemSecure.authentication.subscribeOnLogin(function(username){
+  console.log(username);
+});
+```
+### Subscription resignation
+```
+SteemSecure.authentication.unSubscribeOnLogin(function(username){
+  console.log(username);
+});
+```
+### Moment when the users log out from extension
+```
+SteemSecure.authentication.subscribeOnLogout(function(){
+  
+});
+```
+### Subscription resignation
+```
+SteemSecure.authentication.unSubscribeOnLogout(function(username){
+  console.log(username);
+});
+```
+### Method to check if user is already logged in
+```
+SteemSecure.authentication.isUserLoggedIn(function(isLoggedIn, username){
+  console.log(isLoggedIn, username);
+  //example: true, bartosz546
+});
+```
+
 ## Config
 Default config should work with steem. however you can change it to work with golos
 as 

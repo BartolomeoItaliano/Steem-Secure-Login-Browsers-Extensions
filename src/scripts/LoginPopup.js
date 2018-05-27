@@ -26,58 +26,61 @@ export class LoginPopup {
     let privateDataModel = new PrivateDataModel(login);
 
     steem.api.getAccounts([login], function (err, res) {
-        publicKeys.active = res[0].active.key_auths[0][0];
-        publicKeys.posting = res[0].posting.key_auths[0][0];
-        publicKeys.owner = res[0].owner.key_auths[0][0];
-        publicKeys.memo = res[0].memo_key;
+      publicKeys.active = res[0].active.key_auths[0][0];
+      publicKeys.posting = res[0].posting.key_auths[0][0];
+      publicKeys.owner = res[0].owner.key_auths[0][0];
+      publicKeys.memo = res[0].memo_key;
 
-        if (steem.auth.isWif(passwordOrWIF)) {
-          if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.active)) {
-            privateDataModel.activeKey=passwordOrWIF;
-          }
-          else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.posting)) {
-            privateDataModel.postingKey=passwordOrWIF;
-          }
-          else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.memo)) {
-            privateDataModel.memoKey=passwordOrWIF;
-          }
-          else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.owner)) {
-            console.error("Keep your owner key safe and do not ever show it again");
-            return;
-          }
-          else {
-            console.error("You've typed wrong WIF");
-            return;
-          }
+      if (steem.auth.isWif(passwordOrWIF)) {
+        if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.active)) {
+          privateDataModel.activeKey = passwordOrWIF;
+        }
+        else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.posting)) {
+          privateDataModel.postingKey = passwordOrWIF;
+        }
+        else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.memo)) {
+          privateDataModel.memoKey = passwordOrWIF;
+        }
+        else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.owner)) {
+          console.error("Keep your owner key safe and do not ever show it again");
+          return;
         }
         else {
-          let privateKeys = steem.auth.getPrivateKeys(login, passwordOrWIF);
-          privateDataModel.activeKey= privateKeys.active;
-          privateDataModel.postingKey= privateKeys.posting;
-          privateDataModel.memoKey=privateKeys.memo;
-          if (steem.auth.wifIsValid(privateDataModel.activeKey, publicKeys.active) &&
-            steem.auth.wifIsValid(privateDataModel.postingKey, publicKeys.posting) &&
-            steem.auth.wifIsValid(privateDataModel.memoKey, publicKeys.memo)) {
-          }
-          else {
-            console.error("You've typed wrong password.");
-            return;
-          }
+          console.error("You've typed wrong WIF");
+          return;
         }
-        PrivateDataManager.setPrivateDataForDomain(privateDataModel, ()=>{
-          this.showLogoutForm();
-        });
+      }
+      else {
+        let privateKeys = steem.auth.getPrivateKeys(login, passwordOrWIF);
+        privateDataModel.activeKey = privateKeys.active;
+        privateDataModel.postingKey = privateKeys.posting;
+        privateDataModel.memoKey = privateKeys.memo;
+        if (steem.auth.wifIsValid(privateDataModel.activeKey, publicKeys.active) &&
+          steem.auth.wifIsValid(privateDataModel.postingKey, publicKeys.posting) &&
+          steem.auth.wifIsValid(privateDataModel.memoKey, publicKeys.memo)) {
+        }
+        else {
+          console.error("You've typed wrong password.");
+          return;
+        }
+      }
+      PrivateDataManager.setPrivateDataForDomain(privateDataModel, () => {
+        this.sendMessageWithParams("UserLoggedIn", {login: login});
+        this.showLogoutForm();
+      });
     }.bind(this));
   }
 
 
   logoutOnThisPage() {
-    PrivateDataManager.removePrivateDataForDomain(()=>{
+    this.sendMessageWithParams("UserLoggedOut");
+    PrivateDataManager.removePrivateDataForDomain(() => {
       this.showLoginForm();
     });
   }
 
   logoutEverywhere() {
+    this.sendMessageWithParams("UserLoggedOut");
     PrivateDataManager.clearAllPrivateData();
     this.showLoginForm();
   }
@@ -102,7 +105,8 @@ export class LoginPopup {
       this.logoutEverywhere();
     }.bind(this));
 
-    this.loginButton.addEventListener("click", function () {
+    this.loginButton.addEventListener("click", function (event) {
+      event.preventDefault();
       this.login();
     }.bind(this));
   }
@@ -111,7 +115,7 @@ export class LoginPopup {
    * @private
    */
   initializePopup() {
-    PrivateDataManager.getPrivateDataForDomain((privateDataModel)=>{
+    PrivateDataManager.getPrivateDataForDomain((privateDataModel) => {
       if (privateDataModel && Object.keys(privateDataModel).length !== 0) {
         this.showLogoutForm();
       }
@@ -135,5 +139,16 @@ export class LoginPopup {
   showLogoutForm() {
     this.loginForm.style.display = "none";
     this.logoutForm.style.display = "block";
+  }
+
+  /**
+   * @private
+   */
+  sendMessageWithParams(messageName, params) {
+    ext.tabs.query({}, tabs => {
+      tabs.forEach(tab => {
+        ext.tabs.sendMessage(tab.id, {messageName, params});
+      });
+    });
   }
 }

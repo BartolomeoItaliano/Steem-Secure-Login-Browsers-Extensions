@@ -1,12 +1,53 @@
 import {SSERequest} from "./SSERequest";
+import {AuthenticationObserver} from "./AuthenticationObserver";
 
 let sseRequest = new SSERequest();
-
+let authenticationObserver = new AuthenticationObserver();
 window.SteemSecure = {};
 window.SteemSecure.api = {};
 window.SteemSecure.broadcast = {};
 window.SteemSecure.config = {};
 window.SteemSecure.formatter = {};
+window.SteemSecure.authentication = {};
+
+let loginSubscribers = [];
+
+
+/**
+ * @param {function(username)} callback
+ */
+window.SteemSecure.authentication.subscribeOnLogin = function (callback) {
+  authenticationObserver.subscribeOnLogin(callback);
+};
+
+/**
+ * @param {function(username)} callback
+ */
+window.SteemSecure.authentication.unSubscribeOnLogin = function (callback) {
+  authenticationObserver.unSubscribeOnLogin(callback);
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.authentication.subscribeOnLogout = function (callback) {
+  authenticationObserver.subscribeOnLogout(callback)
+};
+
+/**
+ * @param {function} callback
+ */
+window.SteemSecure.authentication.unSubscribeOnLogout = function (callback) {
+  authenticationObserver.unSubscribeOnLogout(callback);
+};
+
+/**
+ * @param {function({steemAccountName})} callback
+ */
+window.SteemSecure.authentication.isUserLoggedIn = function (callback) {
+  let params = {};
+  sseRequest.send("SteemSecure.authentication.isUserLoggedIn", params, callback);
+};
 
 /**
  * @param {object} options - object with steem-js library custom configuration
