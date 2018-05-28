@@ -6,9 +6,9 @@ export class BackgroundRequest{
   }
 
   send(route, params, onRequestDone){
-    ext.runtime.sendMessage({route, params}, function(response) {
-      console.log(response);
-      onRequestDone(response.params);
+    ext.runtime.sendMessage({route, params}, function(params) {
+      console.log(params);
+      onRequestDone(params);
       return true;
     });
   }
