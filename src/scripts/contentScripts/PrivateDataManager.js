@@ -2,6 +2,7 @@ import {DomainGetter} from "../utils/DomainGetter";
 import ext from "../utils/ext";
 
 /**
+ * Manages users private data
  * Webpages doesn't have access to data stored with this manager
  */
 export class PrivateDataManager {
@@ -12,9 +13,7 @@ export class PrivateDataManager {
    * @param callback
    */
   static setPrivateDataForDomain(privateDataModel, callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
+    DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.set({[domainName]: privateDataModel});
       callback();
     });
@@ -25,12 +24,10 @@ export class PrivateDataManager {
    * @returns {void}
    */
   static getPrivateDataForDomain(callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
-      ext.storage.local.get(domainName, function (privateDataModel) {
-        if(privateDataModel[domainName]) {
-          callback(privateDataModel[domainName]);
+    DomainGetter.getPageDomain(function (domainName) {
+      ext.storage.local.get(domainName, function (privateData) {
+        if(privateData[domainName]) {
+          callback(privateData[domainName]);
         }
         else{
           callback(null);
@@ -50,9 +47,7 @@ export class PrivateDataManager {
    * @returns {void}
    */
   static getActiveCredentials(callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
+    DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
         if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName].activeKey)) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].activeKey);
@@ -66,9 +61,7 @@ export class PrivateDataManager {
    * @returns {void}
    */
   static getPostingCredentials(callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
+    DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
         if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName].postingKey)) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].postingKey);
@@ -82,9 +75,7 @@ export class PrivateDataManager {
    * @returns {void}
    */
   static getMemoCredentials(callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
+    DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
         if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName])) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].memoKey);
@@ -99,9 +90,7 @@ export class PrivateDataManager {
    * @returns {void}
    */
   static removePrivateDataForDomain(callback) {
-    let domainName;
-    PrivateDataManager.getPageUrl(function (url) {
-      domainName = DomainGetter.getDomainFromUrl(url);
+    DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.remove([domainName]);
       callback();
     });
@@ -131,23 +120,5 @@ export class PrivateDataManager {
     }
     console.error("You didn't gave permission for this kind of operation during login process");
     return false;
-  }
-
-  /**
-   * @private
-   * @param {function({string})} callback - get back url
-   * @returns {void}
-   */
-  static getPageUrl(callback) {
-    /**
-     * Script is loaded to popup and content script due to their different privalages this 'if statement' is neccessarily
-     */
-    if (ext.tabs && ext.tabs.getSelected) {
-      ext.tabs.getSelected(null, function (tab) {
-        callback(tab.url)
-      });
-    }
-    else
-      callback(location.href);
   }
 }
