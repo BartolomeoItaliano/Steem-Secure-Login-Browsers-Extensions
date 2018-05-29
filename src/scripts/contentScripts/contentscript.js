@@ -5,6 +5,12 @@ import {PrivateDataManager} from "./PrivateDataManager";
 import {MessagesToEventsTransformer} from "./MessagesToEventsTransformer";
 import {ConfirmationManager} from "./ConfirmationManager";
 
+/**
+ * What this script does:
+ * 1. Script injects to webpage head or body script with interface
+ * 2. Script works as "server" for requests send from injected script
+ */
+
 let s = document.createElement('script');
 s.src = chrome.extension.getURL('scripts/injectedScripts/steemSecureSteemJsInterface.js');
 (document.head || document.documentElement).appendChild(s);

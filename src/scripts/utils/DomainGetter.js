@@ -8,7 +8,7 @@ export class DomainGetter {
    */
   static getPageDomain(callback) {
     DomainGetter.getPageUrl(function (url) {
-      subdomain = subdomain || false;
+      let subdomain = subdomain || false;
 
       url = url.replace(/(https?:\/\/)?(www.)?/i, '');
 
@@ -19,7 +19,8 @@ export class DomainGetter {
       }
 
       if (url.indexOf('/') !== -1) {
-        return url.split('/')[0];
+        callback(url.split('/')[0]);
+        return;
       }
 
       callback(url);

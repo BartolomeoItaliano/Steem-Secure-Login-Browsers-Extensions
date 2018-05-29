@@ -107,7 +107,7 @@ SteemSecure.authentication.unSubscribeOnLogout(function(username){
   console.log(username);
 });
 ```
-### Method to check if user is already logged in
+### Method to check user name and if he is already logged in
 ```
 SteemSecure.authentication.isUserLoggedIn(function(isLoggedIn, username){
   console.log(isLoggedIn, username);

@@ -1,11 +1,13 @@
 import ext from "../utils/ext";
 
+/**
+ * BackgroundRequest
+ * Script wraps extension sendMessage method to avoid unnecessary code writing
+ */
+
 export class BackgroundRequest{
-  constructor(){
 
-  }
-
-  send(route, params, onRequestDone){
+  static send(route, params, onRequestDone){
     ext.runtime.sendMessage({route, params}, function(params) {
       console.log(params);
       onRequestDone(params);
