@@ -99,7 +99,7 @@ export class ConfirmationManager {
     }.bind(this));
   }
 
-  askForDelegateSteemPower(params, callback) {
+  askForSteemPowerDelegation(params, callback) {
     this.getSettingsForDomain(function (settings) {
       if(!settings.delegateSteemPowerPermanentlyAlowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.delegateSteemPower", params, function (paramsFromPopup) {

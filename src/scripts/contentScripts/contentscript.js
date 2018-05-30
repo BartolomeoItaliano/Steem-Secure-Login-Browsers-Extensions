@@ -591,11 +591,19 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.delegateVestingShares", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.delegateVestingShares(activeWif, steemAccountName, params.delegatee, params.vesting_shares, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForSteemPowerDelegation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.delegateVestingShares(activeWif, steemAccountName, params.delegatee, params.vesting_shares, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
@@ -651,201 +659,360 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.comment", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.comment(postingWif, params.parentAuthor, params.parentPermlink, steemAccountName, params.permlink, params.title, params.body, params.jsonMetadata, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForComment(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.comment(postingWif, params.parentAuthor, params.parentPermlink, steemAccountName, params.permlink, params.title, params.body, params.jsonMetadata, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.commentOptions", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.commentOptions(postingWif, steemAccountName, params.permlink, params.maxAcceptedPayout, params.percentSteemDollars, params.allowVotes, params.allowCurationRewards, params.extensions, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.commentOptions(postingWif, steemAccountName, params.permlink, params.maxAcceptedPayout, params.percentSteemDollars, params.allowVotes, params.allowCurationRewards, params.extensions, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.commentPayout", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.commentReward", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.commentReward(postingWif, steemAccountName, params.permlink, params.sbdPayout, params.vestingPayout, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.commentReward(postingWif, steemAccountName, params.permlink, params.sbdPayout, params.vestingPayout, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.convert", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.convert(postingWif, steemAccountName, params.requestid, params.amount, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.convert(postingWif, steemAccountName, params.requestid, params.amount, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.curateReward", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.curateReward(postingWif, steemAccountName, params.reward, params.commentAuthor, params.commentPermlink, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.curateReward(postingWif, steemAccountName, params.reward, params.commentAuthor, params.commentPermlink, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.custom", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.custom(activeWif, steemAccountName, params.requiredAuths, params.id, params.data, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.custom(activeWif, steemAccountName, params.requiredAuths, params.id, params.data, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.customBinary", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.customBinary(activeWif, params.id, params.data, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.customBinary(activeWif, params.id, params.data, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.customJson", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.customJson(activeWif, params.requiredAuths, params.requiredPostingAuths, params.id, params.json, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.customJson(activeWif, params.requiredAuths, params.requiredPostingAuths, params.id, params.json, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.deleteComment", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.deleteComment(postingWif, steemAccountName, params.permlink, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForDeleteComment(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.deleteComment(postingWif, steemAccountName, params.permlink, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.escrowDispute", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.escrowDispute(activeWif, steemAccountName, params.to, params.agent, params.who, params.escrowId, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.escrowDispute(activeWif, steemAccountName, params.to, params.agent, params.who, params.escrowId, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.escrowRelease", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.escrowRelease(activeWif, steemAccountName, params.to, params.agent, params.who, params.receiver, params.escrowId, params.sbdAmount, params.steemAmount, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.escrowRelease(activeWif, steemAccountName, params.to, params.agent, params.who, params.receiver, params.escrowId, params.sbdAmount, params.steemAmount, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.escrowTransfer", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.escrowTransfer(activeWif, steemAccountName, params.to, params.agent, params.escrowId, params.sbdAmount, params.steemAmount, params.fee, params.ratificationDeadline, params.escrowExpiration, params.jsonMeta, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.escrowTransfer(activeWif, steemAccountName, params.to, params.agent, params.escrowId, params.sbdAmount, params.steemAmount, params.fee, params.ratificationDeadline, params.escrowExpiration, params.jsonMeta, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.feedPublish", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.feedPublish(activeWif, steemAccountName, params.exchangeRate, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.feedPublish(activeWif, steemAccountName, params.exchangeRate, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.pow2", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.pow2(activeWif, params.work, params.newOwnerKey, params.props, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.pow2(activeWif, params.work, params.newOwnerKey, params.props, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.fillConvertRequest", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.fillConvertRequest(activeWif, steemAccountName, params.requestid, params.amountIn, params.amountOut, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.fillConvertRequest(activeWif, steemAccountName, params.requestid, params.amountIn, params.amountOut, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.fillOrder", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.fillOrder(activeWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.fillOrder(activeWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
-
 extensionServer.on(
   "steem.broadcast.fillVestingWithdraw", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.fillVestingWithdraw(activeWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.fillVestingWithdraw(activeWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.interest", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.interest(activeWif, steemAccountName, params.interest, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.interest(activeWif, steemAccountName, params.interest, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.limitOrderCancel", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.limitOrderCancel(activeWif, steemAccountName, params.orderid, function (err, res) {
-        eResponse.send(res, err);
-      });
-    });
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.limitOrderCancel(activeWif, steemAccountName, params.orderid, function (err, res) {
+              eResponse.send(res, err);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
@@ -952,14 +1119,14 @@ extensionServer.on(
 extensionServer.on(
   "steem.broadcast.transfer", function (params, eResponse) {
     confirmationManager.askForTransfer(params, function (allowed) {
-      if(allowed){
+      if (allowed) {
         PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
           steem.broadcast.transfer(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
             eResponse.send(res, err);
           });
         })
       }
-      else{
+      else {
         eResponse.send(null, new Error("Operation not Permitted by user!"));
       }
     })
@@ -968,11 +1135,19 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.transferToVesting", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.transferToVesting(activeWif, steemAccountName, params.to, params.amount, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.transferToVesting(activeWif, steemAccountName, params.to, params.amount, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
@@ -988,114 +1163,194 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.withdrawVesting", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.withdrawVesting(postingWif, steemAccountName, params.vestingShares, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.withdrawVesting(postingWif, steemAccountName, params.vestingShares, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.witnessUpdate", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.witnessUpdate(postingWif, steemAccountName, params.url, params.blockSigningKey, params.props, params.fee, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.witnessUpdate(postingWif, steemAccountName, params.url, params.blockSigningKey, params.props, params.fee, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.fillVestingWithdraw", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.fillVestingWithdraw(postingWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.fillVestingWithdraw(postingWif, steemAccountName, params.toAccount, params.withdrawn, params.deposited, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.fillOrder", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.fillOrder(postingWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.fillOrder(postingWif, steemAccountName, params.currentOrderid, params.currentPays, params.openOwner, params.openOrderid, params.openPays, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.fillTransferFromSavings", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.fillTransferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.requestId, params.memo, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.fillTransferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.requestId, params.memo, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.commentPayout", function (params, eResponse) {
-    PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
-      steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
+            steem.broadcast.commentPayout(postingWif, steemAccountName, params.permlink, params.payout, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.transferToSavings", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.transferToSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.transferToSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.transferFromSavings", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.transferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.transferFromSavings(activeWif, steemAccountName, params.to, params.amount, params.memo, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.cancelTransferFromSavings", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      steem.broadcast.cancelTransferFromSavings(activeWif, steemAccountName, params.requestId, function (err, res) {
-        eResponse.send(res, err);
-      });
-    })
+    confirmationManager.askForUnknowOperation(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            steem.broadcast.cancelTransferFromSavings(activeWif, steemAccountName, params.requestId, function (err, res) {
+              eResponse.send(res, err);
+            });
+          })
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
 extensionServer.on(
   "steem.broadcast.prepareAndSignTransferTransaction", function (params, eResponse) {
-    PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
-      let tx = {
-        extensions: [],
-        operations: [
-          ["transfer", {
-            amount: params.amount,
-            from: steemAccountName,
-            to: params.to,
-            memo: params.memo
-          }]
-        ]
-      };
-      steem.broadcast._prepareTransaction(tx).then(function (params) {
-        return bluebird.join(transaction, steem.auth.signTransaction(params.transaction, {active: activeWif}));
-      }).spread(function (transaction, signedTransaction) {
-        eResponse.send(signedTransaction);
-      });
-    });
+    confirmationManager.askForTransfer(params, function (allowed) {
+        if (allowed) {
+          PrivateDataManager.getActiveCredentials(function (steemAccountName, activeWif) {
+            let tx = {
+              extensions: [],
+              operations: [
+                ["transfer", {
+                  amount: params.amount,
+                  from: steemAccountName,
+                  to: params.to,
+                  memo: params.memo
+                }]
+              ]
+            };
+            steem.broadcast._prepareTransaction(tx).then(function (params) {
+              return bluebird.join(transaction, steem.auth.signTransaction(params.transaction, {active: activeWif}));
+            }).spread(function (transaction, signedTransaction) {
+              eResponse.send(signedTransaction);
+            });
+          });
+        }
+        else {
+          eResponse.send(null, new Error("Operation not Permitted by user!"));
+        }
+      }
+    );
   }
 );
 
