@@ -14,15 +14,112 @@ export class ConfirmationManager {
   }
 
   /**
-   * Allow without asking if option checked, ask anyway if operation have tis on very high amount
+   * Allow without asking, if option checked. Ask anyway, if operation have stands on very high amount od Steems
    * @param params
    * @param callback
    */
   askForTransfer(params, callback) {
     this.getSettingsForDomain(function (settings) {
-      if(!settings.permanentlyAllowed) {
+      if(!settings.transfersPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.transfer", params, function (paramsFromPopup) {
-          this.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          console.log(params, "Check the additional theft params!");
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForComment(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.postCommentPermanentlyAllowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.comment", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForPost(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.postCommentPermanentlyAllowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.post", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForDeleteComment(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.deleteCommentPermanentlyAllowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.deleteComment", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForVote(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.votePermanentlyAllowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.vote", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForDelegateSteemPower(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.delegateSteemPowerPermanentlyAlowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.delegateSteemPower", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
+          //Check if User Allowed future automatic confirmations, if yes changed params in storage
+          callback(paramsFromPopup.allowed);
+          return true;
+        }.bind(this));
+      }
+      else{
+        callback(bRparams.allowed);
+      }
+    }.bind(this));
+  }
+
+  askForUnknowOperation(params, callback) {
+    this.getSettingsForDomain(function (settings) {
+      if(!settings.unknownOperationPermanentlyAllowed) {
+        BackgroundRequest.send("ConfirmPopup.broadcast.unknownOperation", params, function (paramsFromPopup) {
+          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
           //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
@@ -57,7 +154,7 @@ export class ConfirmationManager {
    * @param newSettings {Settings}
    * @param callback
    */
-  updateSettingsForDomain(currentSettings, newSettings, callback) {
+  static updateSettingsForDomain(currentSettings, newSettings, callback) {
     for (let key in currentSettings) {
       if (currentSettings && currentSettings.hasOwnProperty(key) && newSettings && newSettings.hasOwnProperty(key)) {
         currentSettings[key] = newSettings[key];

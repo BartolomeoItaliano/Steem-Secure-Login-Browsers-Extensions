@@ -1,6 +1,6 @@
 import ext from "../utils/ext";
 
-class ConfirmationPopup {
+class Vote {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
@@ -43,5 +43,5 @@ class ConfirmationPopup {
 }
 
 window.onload = function () {
-  new ConfirmationPopup();
+  new Vote();
 };

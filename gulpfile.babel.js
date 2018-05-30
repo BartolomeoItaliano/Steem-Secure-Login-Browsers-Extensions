@@ -131,7 +131,12 @@ function buildJS(target) {
     'contentScripts/contentscript.js',
     'options.js',
     'popupScripts/LoginPopup.js',
-    'confirmationPopupScripts/ConfirmationPopup.js',
+    'confirmationPopups/Transfer.js',
+    'confirmationPopups/Comment.js',
+    'confirmationPopups/DelegateSteemPower.js',
+    'confirmationPopups/DeleteComment.js',
+    'confirmationPopups/UnknownOperation.js',
+    'confirmationPopups/Vote.js',
     'livereload.js',
     'injectedScripts/steemSecureSteemJsInterface.js'
   ]
