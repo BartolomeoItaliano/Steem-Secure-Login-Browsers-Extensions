@@ -132,7 +132,7 @@ function buildJS(target) {
     'options.js',
     'popupScripts/LoginPopup.js',
     'confirmationPopups/Transfer.js',
-    'confirmationPopups/Comment.js',
+    'confirmationPopups/PostOrComment.js',
     'confirmationPopups/DelegateSteemPower.js',
     'confirmationPopups/DeleteComment.js',
     'confirmationPopups/UnknownOperation.js',

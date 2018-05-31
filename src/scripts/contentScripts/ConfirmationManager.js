@@ -20,7 +20,27 @@ export class ConfirmationManager {
    */
   askForTransfer(params, callback) {
     this.getSettingsForDomain(function (settings) {
-      if(!settings.transfersPermanentlyAllowed) {
+      let amount = parseInt(params.amount.split(" ")[0]);
+      let currency = parseInt(params.amount.split(" ")[1]);
+      if(currency==="STEEM"){
+        settings.alreadySendSBDAmount+=amount;
+      }
+      else if(currency==="SBD"){
+        settings.alreadySendSBDAmount+=amount;
+      }
+      else{
+        throw new Error("Currency type you chose does not exist choose STEEM or SBD");
+      }
+
+      if(settings.maxTransactionsSizeWithoutAllowance>settings.alreadySendSBDAmount
+        || settings.maxTransactionsSizeWithoutAllowance>settings.alreadySendSteemAmount){
+        settings.transfersPermanentlyAllowed = false;
+        settings.alreadySendSBDAmount = 0;
+        settings.alreadySendSteemAmount = 0;
+      }
+
+
+      if(!settings.transfersTemporaryAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.transfer", params, function (paramsFromPopup) {
           console.log(params, "Check the additional theft params!");
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
@@ -35,7 +55,7 @@ export class ConfirmationManager {
     }.bind(this));
   }
 
-  askForComment(params, callback) {
+  askForPostOrComment(params, callback) {
     this.getSettingsForDomain(function (settings) {
       if(!settings.postCommentPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.comment", params, function (paramsFromPopup) {
@@ -51,23 +71,7 @@ export class ConfirmationManager {
     }.bind(this));
   }
 
-  askForPost(params, callback) {
-    this.getSettingsForDomain(function (settings) {
-      if(!settings.postCommentPermanentlyAllowed) {
-        BackgroundRequest.send("ConfirmPopup.broadcast.post", params, function (paramsFromPopup) {
-          ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
-          callback(paramsFromPopup.allowed);
-          return true;
-        }.bind(this));
-      }
-      else{
-        callback(bRparams.allowed);
-      }
-    }.bind(this));
-  }
-
-  askForDeleteComment(params, callback) {
+  askForDeletePostOrComment(params, callback) {
     this.getSettingsForDomain(function (settings) {
       if(!settings.deleteCommentPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.deleteComment", params, function (paramsFromPopup) {
@@ -171,7 +175,7 @@ export class ConfirmationManager {
 
 /**
  * @typedef {Object} Settings
- * @property transfersPermanentlyAllowed {boolean}
+ * @property transfersTemporaryAllowed {boolean}
  * @property postCommentPermanentlyAllowed {boolean}
  * @property votePermanentlyAllowed {boolean}
  * @property deleteCommentPermanentlyAllowed {boolean}
@@ -185,13 +189,13 @@ export class ConfirmationManager {
  * @type {Settings}
  */
 ConfirmationManager.DEFAULT_SETTINGS = {
-  transfersPermanentlyAllowed: false,
+  transfersTemporaryAllowed: false,
   postCommentPermanentlyAllowed: false,
   votePermanentlyAllowed: false,
   deleteCommentPermanentlyAllowed: false,
   delegateSteemPowerPermanentlyAlowed: false,
   unknownOperationPermanentlyAllowed: false,
-  maxTransactionsSizeWithoutAllowance: 100,
+  maxTransactionsSizeWithoutAllowance: 50,
   alreadySendSteemAmount: 0,
   alreadySendSBDAmount: 0
 };

@@ -18,14 +18,7 @@ backgroundServer.on(
 backgroundServer.on(
   "ConfirmPopup.broadcast.comment", function (request, response) {
     window.responsesWaitingForProceed[request.id]=response;
-    window.open("confirmationPopups/Comment.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
-  }
-);
-
-backgroundServer.on(
-  "ConfirmPopup.broadcast.post", function (request, response) {
-    window.responsesWaitingForProceed[request.id]=response;
-    window.open("confirmationPopups/Post.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
+    window.open("confirmationPopups/PostOrComment.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
   }
 );
 

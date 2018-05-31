@@ -19,7 +19,9 @@ class Vote {
   onConfirmButtonClicked() {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
-        allowed: true, settings: {}
+        allowed: true, settings: {
+          votePermanentlyAllowed: document.getElementById("myCheck").checked
+        }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
       window.close();

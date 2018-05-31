@@ -35,7 +35,6 @@
     "src/scripts/confirmationPopupScripts/Comment.js",
     "src/scripts/confirmationPopupScripts/DelegateSteemPower.js",
     "src/scripts/confirmationPopupScripts/DeleteComment.js",
-    "src/scripts/confirmationPopupScripts/Post.js",
     "src/scripts/confirmationPopupScripts/Transfer.js",
     "src/scripts/confirmationPopupScripts/UnknownOperation.js",
     "src/scripts/confirmationPopupScripts/Vote.js"

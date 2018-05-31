@@ -1,6 +1,6 @@
 import ext from "../utils/ext";
 
-class Comment {
+class PostOrComment {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
@@ -19,7 +19,9 @@ class Comment {
   onConfirmButtonClicked() {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
-        allowed: true, settings: {}
+        allowed: true, settings: {
+          postCommentPermanentlyAllowed: document.getElementById("myCheck").checked
+        }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
       window.close();
@@ -43,5 +45,5 @@ class Comment {
 }
 
 window.onload = function () {
-  new Comment();
+  new PostOrComment();
 };

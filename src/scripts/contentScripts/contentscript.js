@@ -659,7 +659,7 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.comment", function (params, eResponse) {
-    confirmationManager.askForComment(params, function (allowed) {
+    confirmationManager.askForPostOrComment(params, function (allowed) {
         if (allowed) {
           PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
             steem.broadcast.comment(postingWif, params.parentAuthor, params.parentPermlink, steemAccountName, params.permlink, params.title, params.body, params.jsonMetadata, function (err, res) {
@@ -821,7 +821,7 @@ extensionServer.on(
 
 extensionServer.on(
   "steem.broadcast.deleteComment", function (params, eResponse) {
-    confirmationManager.askForDeleteComment(params, function (allowed) {
+    confirmationManager.askForDeletePostOrComment(params, function (allowed) {
         if (allowed) {
           PrivateDataManager.getPostingCredentials(function (steemAccountName, postingWif) {
             steem.broadcast.deleteComment(postingWif, steemAccountName, params.permlink, function (err, res) {
