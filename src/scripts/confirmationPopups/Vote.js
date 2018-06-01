@@ -20,7 +20,7 @@ class Vote {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
         allowed: true, settings: {
-          votePermanentlyAllowed: document.getElementById("myCheck").checked
+          votePermanentlyAllowed: document.getElementById("confirmInFutureCheckbox").checked
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);

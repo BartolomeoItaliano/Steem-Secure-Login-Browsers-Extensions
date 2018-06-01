@@ -20,7 +20,7 @@ class Transfer {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
         allowed: true, settings: {
-          transfersTemporaryAllowed: document.getElementById("myCheck").checked
+          transfersTemporaryAllowed: document.getElementById("confirmInFutureCheckbox").checked
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);

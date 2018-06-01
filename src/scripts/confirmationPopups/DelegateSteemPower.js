@@ -20,7 +20,7 @@ class DelegateSteemPower {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
         allowed: true, settings: {
-          delegateSteemPowerPermanentlyAlowed: document.getElementById("myCheck").checked
+          delegateSteemPowerPermanentlyAlowed: document.getElementById("confirmInFutureCheckbox").checked
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);

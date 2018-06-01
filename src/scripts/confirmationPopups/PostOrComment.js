@@ -20,7 +20,7 @@ class PostOrComment {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
         allowed: true, settings: {
-          postCommentPermanentlyAllowed: document.getElementById("myCheck").checked
+          postCommentPermanentlyAllowed: document.getElementById("confirmInFutureCheckbox").checked
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);

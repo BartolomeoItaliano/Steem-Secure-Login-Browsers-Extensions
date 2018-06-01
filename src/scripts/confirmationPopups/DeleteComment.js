@@ -20,7 +20,7 @@ class DeleteComment {
     ext.runtime.getBackgroundPage(function (backgroundPage) {
       let params = {
         allowed: true, settings: {
-          deleteCommentPermanentlyAllowed: document.getElementById("myCheck").checked
+          deleteCommentPermanentlyAllowed: document.getElementById("confirmInFutureCheckbox").checked
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);

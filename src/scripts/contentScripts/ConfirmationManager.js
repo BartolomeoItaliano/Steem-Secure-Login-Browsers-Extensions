@@ -20,8 +20,8 @@ export class ConfirmationManager {
    */
   askForTransfer(params, callback) {
     this.getSettingsForDomain(function (settings) {
-      let amount = parseInt(params.amount.split(" ")[0]);
-      let currency = parseInt(params.amount.split(" ")[1]);
+      let amount = parseFloat(params.amount.split(" ")[0]);
+      let currency = params.amount.split(" ")[1];
       if(currency==="STEEM"){
         settings.alreadySendSBDAmount+=amount;
       }
