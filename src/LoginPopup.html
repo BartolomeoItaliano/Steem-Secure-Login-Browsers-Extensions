@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link href="styles/popup.css" rel="stylesheet">
-  <script src="scripts/popup.js"></script>
+  <script src="scripts/popupScripts/LoginPopup.js"></script>
 </head>
 <body>
 <div class="login-modal">
@@ -12,15 +12,16 @@
     <div class="title"></div>
   </div>
 
-  <form id="loginForm" class="login-form">
+  <form id="loginForm" class="login-form" method="post" autocomplete="on">
     <div class="login-row">
       <span class="input-at-label">@</span>
-      <input id="steemLoginInput" type="text" class="input-login" required placeholder="Enter your username">
+      <input id="steemLoginInput" type="text" class="input-login" required placeholder="Enter your username" name="username" value="" autocomplete="on">
     </div>
-    <input id="steemPasswordOrWIFInput" type="password" class="input-password" required placeholder="Password or WIF">
-
+    <div>
+    <input id="steemPasswordOrWIFInput" type="password" class="input-password" required placeholder="Password or WIF" name="password" value="" autocomplete="on">
+    </div>
     <div class="login-modal-buttons">
-      <button type="button" id="loginButton" class="login-button">Login on this page</button>
+      <button type="submit" id="loginButton" class="login-button">Login on this page</button>
       <button type="button" id="cancelLoginPopup" class="cancel-button">Cancel</button>
     </div>
   </form>

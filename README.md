@@ -81,6 +81,40 @@
   
 </div>
 
+## SteemSecure Authentication
+These methods let you listen on moment when the user login or logout from the extension
+### Moment when the users sucessfully submit form
+```
+SteemSecure.authentication.subscribeOnLogin(function(username){
+  console.log(username);
+});
+```
+### Subscription resignation
+```
+SteemSecure.authentication.unSubscribeOnLogin(function(username){
+  console.log(username);
+});
+```
+### Moment when the users log out from extension
+```
+SteemSecure.authentication.subscribeOnLogout(function(){
+  
+});
+```
+### Subscription resignation
+```
+SteemSecure.authentication.unSubscribeOnLogout(function(username){
+  console.log(username);
+});
+```
+### Method to check user name and if he is already logged in
+```
+SteemSecure.authentication.isUserLoggedIn(function(isLoggedIn, username){
+  console.log(isLoggedIn, username);
+  //example: true, bartosz546
+});
+```
+
 ## Config
 Default config should work with steem. however you can change it to work with golos
 as 
@@ -579,25 +613,25 @@ SteemSecure.broadcast.changeRecoveryAccount(accountToRecover, newRecoveryAccount
 });
 ```
 
-### Comment
+### PostOrComment
 ```
 SteemSecure.broadcast.comment(parentAuthor, parentPermlink, permlink, title, body, jsonMetadata, function(err, result) {
   console.log(err, result);
 });
 ```
-### Comment Options
+### PostOrComment Options
 ```
 SteemSecure.broadcast.commentOptions(permlink, maxAcceptedPayout, percentSteemDollars, allowVotes, allowCurationRewards, extensions, function(err, result) {
   console.log(err, result);
 });
 ```
-### Comment Payout
+### PostOrComment Payout
 ```
 SteemSecure.broadcast.commentPayout(permlink, payout, function(err, result) {
   console.log(err, result);
 });
 ```
-### Comment Reward
+### PostOrComment Reward
 ```
 SteemSecure.broadcast.commentReward(permlink, sbdPayout, vestingPayout, function(err, result) {
   console.log(err, result);
@@ -633,7 +667,7 @@ SteemSecure.broadcast.customJson(requiredAuths, requiredPostingAuths, id, json, 
   console.log(err, result);
 });
 ```
-### Delete Comment
+### Delete PostOrComment
 ```
 SteemSecure.broadcast.deleteComment(permlink, function(err, result) {
   console.log(err, result);
@@ -807,7 +841,7 @@ SteemSecure.broadcast.fillTransferFromSavings(to, amount, requestId, memo, funct
   console.log(err, result);
 });
 ```
-### Comment Payout
+### PostOrComment Payout
 ```
 SteemSecure.broadcast.commentPayout(permlink, payout, function(err, result) {
   console.log(err, result);
@@ -834,7 +868,7 @@ SteemSecure.broadcast.cancelTransferFromSavings(requestId, function(err, result)
 
 # Formatter
 
-### Comment Permlink
+### PostOrComment Permlink
 ```
 var parentAuthor = 'ned';
 var parentPermlink = 'a-selfie';
