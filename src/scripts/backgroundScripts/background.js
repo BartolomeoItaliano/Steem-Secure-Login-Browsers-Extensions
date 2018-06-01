@@ -25,7 +25,7 @@ backgroundServer.on(
 backgroundServer.on(
   "ConfirmPopup.broadcast.deleteComment", function (request, response) {
     window.responsesWaitingForProceed[request.id]=response;
-    window.open("confirmationPopups/DeleteComment.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
+    window.open("confirmationPopups/DeletePostOrComment.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
   }
 );
 

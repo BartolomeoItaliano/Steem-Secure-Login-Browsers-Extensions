@@ -44,13 +44,12 @@ export class ConfirmationManager {
         BackgroundRequest.send("ConfirmPopup.broadcast.transfer", params, function (paramsFromPopup) {
           console.log(params, "Check the additional theft params!");
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -60,13 +59,12 @@ export class ConfirmationManager {
       if(!settings.postCommentPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.comment", params, function (paramsFromPopup) {
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -76,13 +74,12 @@ export class ConfirmationManager {
       if(!settings.deleteCommentPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.deleteComment", params, function (paramsFromPopup) {
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -92,13 +89,12 @@ export class ConfirmationManager {
       if(!settings.votePermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.vote", params, function (paramsFromPopup) {
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -108,13 +104,12 @@ export class ConfirmationManager {
       if(!settings.delegateSteemPowerPermanentlyAlowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.delegateSteemPower", params, function (paramsFromPopup) {
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -124,13 +119,12 @@ export class ConfirmationManager {
       if(!settings.unknownOperationPermanentlyAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.unknownOperation", params, function (paramsFromPopup) {
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
-          //Check if User Allowed future automatic confirmations, if yes changed params in storage
           callback(paramsFromPopup.allowed);
           return true;
         }.bind(this));
       }
       else{
-        callback(bRparams.allowed);
+        callback(true);
       }
     }.bind(this));
   }
@@ -141,9 +135,10 @@ export class ConfirmationManager {
    */
   getSettingsForDomain(callback) {
     DomainGetter.getPageDomain(function (domainName) {
-      ext.storage.local.get(domainName+ ConfirmationManager.OPTIONS_CONST, function (settings) {
+      let storageKey = domainName+ ConfirmationManager.OPTIONS_CONST;
+      ext.storage.local.get(storageKey, function (settings) {
         if(!Utils.isObjectEmpty(settings)) {
-          callback(settings);
+          callback(settings[storageKey]);
         }
         else{
           callback(ConfirmationManager.DEFAULT_SETTINGS);

@@ -1,6 +1,6 @@
 import ext from "../utils/ext";
 
-class DeleteComment {
+class DeletePostOrComment {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
@@ -45,5 +45,5 @@ class DeleteComment {
 }
 
 window.onload = function () {
-  new DeleteComment();
+  new DeletePostOrComment();
 };
