@@ -11,14 +11,14 @@ window.responsesWaitingForProceed = {};
 backgroundServer.on(
   "ConfirmPopup.broadcast.transfer", function (request, response) {
     window.responsesWaitingForProceed[request.id]=response;
-    window.open("confirmationPopups/Transfer.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
+    window.open("confirmationPopups/Transfer.html?requestId="+request.id, "extension_popup", "width=640,height=480,status=no,resizable=no");
   }
 );
 
 backgroundServer.on(
   "ConfirmPopup.broadcast.comment", function (request, response) {
     window.responsesWaitingForProceed[request.id]=response;
-    window.open("confirmationPopups/PostOrComment.html?requestId="+request.id, "extension_popup", "width=250,height=220,status=no,resizable=no");
+    window.open("confirmationPopups/PostOrComment.html?requestId="+request.id, "extension_popup", "width=640,height=480,status=no,resizable=no");
   }
 );
 

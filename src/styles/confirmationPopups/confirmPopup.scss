@@ -1,0 +1,67 @@
+body {
+  background-color: #fff; /*#23c6bb;*/
+  margin: 0;
+  font-family: Raleway;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.formContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 32px 0;
+}
+
+
+.buttonContainer {
+  display: flex;
+}
+
+.buttonContainer button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-bottom: 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: Raleway;
+  font-size: 16px;
+  transition: 0.3s all;
+  width: 200px;
+}
+
+.buttonContainer button:hover {
+  color: #fff9;
+}
+
+#confirmButton {
+  background-color: #489931;
+  margin-right: 55px;
+}
+
+#confirmButton:hover {
+  background-color: #2e621f;
+}
+
+#refuseButton {
+  background-color: #e33636;
+  margin-left: 55px;
+}
+
+#refuseButton:hover {
+  background-color: #912323;
+}
+
