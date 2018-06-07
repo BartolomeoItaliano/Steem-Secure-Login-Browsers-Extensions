@@ -42,7 +42,6 @@ export class ConfirmationManager {
 
       if(!settings.transfersTemporaryAllowed) {
         BackgroundRequest.send("ConfirmPopup.broadcast.transfer", params, function (paramsFromPopup) {
-          console.log(params, "Check the additional theft params!");
           ConfirmationManager.updateSettingsForDomain(settings, paramsFromPopup.settings);
           callback(paramsFromPopup.allowed);
           return true;

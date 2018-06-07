@@ -5,7 +5,6 @@ class PostOrComment {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
     this.requestId = this.getRequestIdFromUrl();
-    console.log(this.requestId);
     this.initEventListeners();
   }
 
