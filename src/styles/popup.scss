@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
 }
 
 input {
@@ -40,7 +41,6 @@ button{
 .row1 .logo{
   display: inline-block;
   width: 90px;
-  content:url("../icons/steemSecureLogo128.png");
 }
 .row1 .title{
   display: inline-block;

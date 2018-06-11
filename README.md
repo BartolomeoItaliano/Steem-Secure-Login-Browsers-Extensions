@@ -8,8 +8,8 @@
 </div>
 <div align="center">
   <p>
-    Browsers Extension gives third parties interface to sign transactions without knowing private keys or 
-    giving any user account privalage.
+    Provides third parties interface to sign transactions without knowing private keys or 
+    having any user account privileges.
   </p>
   <p>
     Extension injects into web page script which creates programming interface to interact with steem blockchain.
