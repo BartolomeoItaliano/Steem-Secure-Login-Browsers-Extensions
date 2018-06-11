@@ -2,13 +2,12 @@ export class SSERequest{
 
   constructor(){
     this.routes= {};
-    this.event = document.createEvent('CustomEvent');
-    document.addEventListener("SSERequestDone", function (data) {
-      if(this.routes[data.detail.route].onRequest) {
-        this.routes[data.detail.route].onRequest(data.detail.errorSerializable, data.detail.params);
-        delete this.routes[data.detail.route].onRequest;
+    window.addEventListener("message", function (data) {
+      if(this.routes[data.data.route].onRequest && !data.data.sender) {
+        this.routes[data.data.route].onRequest(data.data.errorSerializable, data.data.params);
+        delete this.routes[data.data.route].onRequest;
       }
-      else{
+      else if(!this.routes[data.data.route].onRequest){
         console.warn("You didn't use callback property, it may cause raise condition.");
       }
     }.bind(this));
@@ -18,7 +17,6 @@ export class SSERequest{
     this.routes[route]={};
     this.routes[route].onRequest = onRequestDone;
 
-    this.event.initCustomEvent("SSERequest", true, true, {route: route, params: params});
-    document.dispatchEvent(this.event);
+    window.postMessage({route: route, params: params, sender: true}, window.location);
   }
 }
