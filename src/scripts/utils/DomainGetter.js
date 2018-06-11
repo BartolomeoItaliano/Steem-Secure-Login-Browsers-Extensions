@@ -37,12 +37,12 @@ export class DomainGetter {
     /**
      * Script is loaded to popup and content script due to their different privalages this 'if statement' is neccessarily
      */
-    if (ext.tabs) {
+    if (ext.tabs && ext.tabs.query) {
       ext.tabs.query({active: true, currentWindow: true}, function (tabs) {
         callback(tabs[0].url);
       });
     }
     else
-      callback(location.href);
+      callback(window.location.href);
   }
 }

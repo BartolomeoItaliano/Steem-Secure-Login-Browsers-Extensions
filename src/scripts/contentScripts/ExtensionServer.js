@@ -3,7 +3,7 @@ export class ExtensionServer {
     this.routes = {};
 
     window.addEventListener("message", function (data) {
-      if(!data.data.serverMessage) {
+      if(!data.data.serverMessage && data.data.route) {
         this.routes[data.data.route].onRequest(data.data.params, this.routes[data.data.route].response);
       }
     }.bind(this));
