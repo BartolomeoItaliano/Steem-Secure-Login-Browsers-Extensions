@@ -37,9 +37,9 @@ export class DomainGetter {
     /**
      * Script is loaded to popup and content script due to their different privalages this 'if statement' is neccessarily
      */
-    if (ext.tabs && ext.tabs.getSelected) {
-      ext.tabs.getSelected(null, function (tab) {
-        callback(tab.url)
+    if (ext.tabs) {
+      ext.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        callback(tabs[0].url);
       });
     }
     else

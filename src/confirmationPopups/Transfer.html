@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Confirm Operation</title>
+  <meta charset="UTF-8">
+  <title>Confirm Money Transfer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link href="../styles/confirmationPopups/confirmPopup.css" rel="stylesheet">
+  <link href="../styles/confirmationPopups/checkbox.css" rel="stylesheet">
   <script src="../scripts/confirmationPopups/Transfer.js"></script>
 </head>
 <body>
-<p>Confirm Money Transfer</p>
-  <button id="confirmButton" type="button">Confirm operation</button>
-  <button id="refuseButton" type="button">Refuse operation</button>
-  Confirm Transfer until you reach 50 STEEM or SBD in operations<input id="confirmInFutureCheckbox" type="checkbox">
-<p>Remember if you check this checkbox you give webpage privalage to send up to 50 STEEM or SBD in your name.</p>
-<p>Choose wisely</p>
+<div class="box">
+  <div class="formContainer">
+    <img src="../icons/steemSecureLogo128.png" alt="logo" />
+
+    <h3 id="confirmationHeader"></h3>
+
+    <div class="buttonContainer">
+      <button id="confirmButton" type="button">Confirm transfer</button>
+      <button id="refuseButton" type="button">Refuse transfer</button>
+    </div>
+
+    <label class="container">Always Confirm Transfer
+      <input id="confirmInFutureCheckbox" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <label class="transferBottomText container">Until you reach 50 STEEM or SBD in operations</label>
+
+  </div>
+</div>
 </body>
 </html>

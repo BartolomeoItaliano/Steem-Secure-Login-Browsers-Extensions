@@ -8,8 +8,8 @@
 </div>
 <div align="center">
   <p>
-    Browsers Extension gives third parties interface to sign transactions without knowing private keys or 
-    giving any user account privalage.
+    Provides third parties interface to sign transactions without knowing private keys or 
+    having any user account privileges.
   </p>
   <p>
     Extension injects into web page script which creates programming interface to interact with steem blockchain.
@@ -581,6 +581,9 @@ SteemSecure.broadcast.accountCreateWithDelegation(wif, fee, delegation, creator,
 SteemSecure.broadcast.delegateVestingShares(delegatee, vesting_shares, function(err, result) {
   console.log(err, result);
 });
+//Delegates about 4.920 STEEM to Bartosz546
+SteemSecure.broadcast.delegateVestingShares("bartosz546", "10000.000000 VESTS", function(e,r){console.log(e,r)});
+
 ```
 ### Account Update
 ```
@@ -671,6 +674,8 @@ SteemSecure.broadcast.customJson(requiredAuths, requiredPostingAuths, id, json, 
 ```
 SteemSecure.broadcast.deleteComment(permlink, function(err, result) {
   console.log(err, result);
+  //Delete post or comment with permlink: "re-comment-bartosz546-test-steem-secure"
+  SteemSecure.broadcast.deleteComment("re-comment-bartosz546-test-steem-secure", function(e,r){console.log(e,r)});
 });
 ```
 ### Escrow Dispute
@@ -797,6 +802,8 @@ SteemSecure.broadcast.setWithdrawVestingRoute(toAccount, percent, autoVest, func
 ```
 SteemSecure.broadcast.transfer(to, amount, memo, function(err, result) {
   console.log(err, result);
+  // Send 0.001 STEEM to bartosz546
+  SteemSecure.broadcast.transfer("bartosz546", "0.001 STEEM", "Steem Secure", function(e,r){console.log(e,r)});
 });
 ```
 ### Transfer To Vesting
@@ -810,6 +817,8 @@ SteemSecure.broadcast.transferToVesting(to, amount, function(err, result) {
 SteemSecure.broadcast.vote(author, permlink, weight, function(err, result) {
   console.log(err, result);
 });
+//Vote with 100% power on bartosz546 post
+SteemSecure.broadcast.vote("bartosz546", "re-bartosz546-bartosz546-test-steem-secure-20180601t165611870z", 10000, function(e,r){console.log(e,r)});
 ```
 ### Withdraw Vesting
 ```

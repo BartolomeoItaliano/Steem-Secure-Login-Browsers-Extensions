@@ -5,7 +5,6 @@ class PostOrComment {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
     this.requestId = this.getRequestIdFromUrl();
-    console.log(this.requestId);
     this.initEventListeners();
   }
 
@@ -24,7 +23,6 @@ class PostOrComment {
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
@@ -34,7 +32,6 @@ class PostOrComment {
         allowed: false, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 

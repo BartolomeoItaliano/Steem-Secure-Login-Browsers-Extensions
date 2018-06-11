@@ -22,7 +22,6 @@ class UnknownOperationConfirmationPopup {
         allowed: true, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
@@ -32,7 +31,6 @@ class UnknownOperationConfirmationPopup {
         allowed: false, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 

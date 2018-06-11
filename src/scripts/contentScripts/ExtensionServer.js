@@ -1,10 +1,11 @@
 export class ExtensionServer {
   constructor() {
     this.routes = {};
-    this.event = document.createEvent('CustomEvent');
 
-    document.addEventListener("SSERequest", function (data) {
-      this.routes[data.detail.route].onRequest(data.detail.params, this.routes[data.detail.route].response);
+    window.addEventListener("message", function (data) {
+      if(!data.data.serverMessage) {
+        this.routes[data.data.route].onRequest(data.data.params, this.routes[data.data.route].response);
+      }
     }.bind(this));
   }
 
@@ -18,7 +19,6 @@ export class ExtensionServer {
 class Response {
   constructor(route) {
     this.route = route;
-    this.event = document.createEvent('CustomEvent');
   }
 
   send(params, err) {
@@ -28,11 +28,11 @@ class Response {
       errorSerializable = {message: err.message};
     }
 
-    this.event.initCustomEvent("SSERequestDone", true, true, {
+    window.postMessage({
       route: this.route,
       params: params,
-      errorSerializable: errorSerializable
-    });
-    document.dispatchEvent(this.event);
+      errorSerializable: errorSerializable,
+      serverMessage: true
+    }, window.location);
   }
 }

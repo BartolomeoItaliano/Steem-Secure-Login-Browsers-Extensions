@@ -1,11 +1,15 @@
 import ext from "../utils/ext";
+import {Utils} from "../utils/Utils";
 
 class Vote {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
+    this.confirmationHeader = document.getElementById("confirmationHeader");
     this.requestId = this.getRequestIdFromUrl();
-    console.log(this.requestId);
+
+    this.confirmationHeader.innerText = "Confirm " + this.getWeightFromUrl() / 100 + "% Vote On " + Utils.capitalizeFirstLetter(this.getAuthorFromUrl());
+
     this.initEventListeners();
   }
 
@@ -24,7 +28,6 @@ class Vote {
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
@@ -34,13 +37,27 @@ class Vote {
         allowed: false, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
   getRequestIdFromUrl() {
     let url = new URL(window.location.href);
     return url.searchParams.get("requestId");
+  }
+
+  getAuthorFromUrl() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("author");
+  }
+
+  getPermlinkFromUrl() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("permlink");
+  }
+
+  getWeightFromUrl() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("weight");
   }
 }
 

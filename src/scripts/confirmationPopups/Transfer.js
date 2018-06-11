@@ -1,11 +1,15 @@
 import ext from "../utils/ext";
+import {Utils} from "../utils/Utils";
 
 class Transfer {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
+    this.confirmationHeader = document.getElementById("confirmationHeader");
     this.requestId = this.getRequestIdFromUrl();
-    console.log(this.requestId);
+
+    this.confirmationHeader.innerText = "Confirm Transfer "+ this.getTransactionAmount() + " to "+ Utils.capitalizeFirstLetter(this.getTransactionRecipient());
+
     this.initEventListeners();
   }
 
@@ -24,7 +28,6 @@ class Transfer {
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
@@ -34,13 +37,22 @@ class Transfer {
         allowed: false, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
   getRequestIdFromUrl() {
     let url = new URL(window.location.href);
     return url.searchParams.get("requestId");
+  }
+
+  getTransactionAmount() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("amount");
+  }
+
+  getTransactionRecipient() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("recipient");
   }
 }
 

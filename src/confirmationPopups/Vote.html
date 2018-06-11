@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Confirm Operation</title>
+  <meta charset="UTF-8">
+  <title>Confirm Your Vote</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link href="../styles/confirmationPopups/confirmPopup.css" rel="stylesheet">
+  <link href="../styles/confirmationPopups/checkbox.css" rel="stylesheet">
   <script src="../scripts/confirmationPopups/Vote.js"></script>
 </head>
 <body>
-<p>Confirm Vote making</p>
-  <button id="confirmButton" type="button">Confirm operation</button>
-  <button id="refuseButton" type="button">Refuse operation</button>
-  Always Confirm This Type Of Operation In Future<input id="confirmInFutureCheckbox" type="checkbox">
+<div class="box">
+  <div class="formContainer">
+    <img src="../icons/steemSecureLogo128.png" alt="logo" />
+
+    <h3 id="confirmationHeader"></h3>
+
+    <div class="buttonContainer">
+      <button id="confirmButton" type="button">Confirm operation</button>
+      <button id="refuseButton" type="button">Refuse operation</button>
+    </div>
+
+    <label class="container">Always confirm this type of operation in future
+      <input id="confirmInFutureCheckbox" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+  </div>
+</div>
 </body>
 </html>

@@ -15,6 +15,7 @@ export class LoginPopup {
     this.cancelLoginPopup = document.getElementById("cancelLoginPopup");
     this.logoutOnThisPageButton = document.getElementById("logoutOnThisPageButton");
     this.logoutEverywhereButton = document.getElementById("logoutEverywhereButton");
+    this.errorMessage = document.getElementById("errorMessage");
     this.initializePopupListeners();
     this.initializePopup();
   }
@@ -25,7 +26,14 @@ export class LoginPopup {
     let publicKeys = {};
     let privateDataModel = new PrivateDataModel(login);
 
+    clearTimeout(this.errorMessageTimeout);
+    this.errorMessage.style.display = "none";
+
     steem.api.getAccounts([login], function (err, res) {
+      if(res.length === 0){
+        this.showErrorMessage("Wrong username!");
+        return;
+      }
       publicKeys.active = res[0].active.key_auths[0][0];
       publicKeys.posting = res[0].posting.key_auths[0][0];
       publicKeys.owner = res[0].owner.key_auths[0][0];
@@ -42,11 +50,11 @@ export class LoginPopup {
           privateDataModel.memoKey = passwordOrWIF;
         }
         else if (steem.auth.wifIsValid(passwordOrWIF, publicKeys.owner)) {
-          console.error("Keep your owner key safe and do not ever show it again");
+          this.showErrorMessage("We don't need your owner key");
           return;
         }
         else {
-          console.error("You've typed wrong WIF");
+          this.showErrorMessage("You've typed wrong WIF");
           return;
         }
       }
@@ -60,7 +68,7 @@ export class LoginPopup {
           steem.auth.wifIsValid(privateDataModel.memoKey, publicKeys.memo)) {
         }
         else {
-          console.error("You've typed wrong password.");
+          this.showErrorMessage("You've typed wrong password.");
           return;
         }
       }
@@ -123,6 +131,18 @@ export class LoginPopup {
         this.showLoginForm();
       }
     });
+  }
+
+  /**
+   * @private
+   */
+  showErrorMessage(errorMessage){
+    clearTimeout(this.errorMessageTimeout);
+    this.errorMessage.style.display = "block";
+    this.errorMessage.innerText = errorMessage;
+    this.errorMessageTimeout = setTimeout(function () {
+      this.errorMessage.style.display = "none";
+    }.bind(this), 5000);
   }
 
   /**

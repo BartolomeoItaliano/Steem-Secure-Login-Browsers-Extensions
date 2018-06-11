@@ -1,11 +1,18 @@
 import ext from "../utils/ext";
+import {Utils} from "../utils/Utils";
 
 class DelegateSteemPower {
   constructor() {
     this.confirmButton = document.getElementById("confirmButton");
     this.refuseButton = document.getElementById("refuseButton");
+    this.confirmationHeader = document.getElementById("confirmationHeader");
+    this.VESTS_TO_STEEM_CONST = 489.282 / 1e6;
     this.requestId = this.getRequestIdFromUrl();
-    console.log(this.requestId);
+
+    let amountOfVests = parseFloat(this.getVestingSharesFromUrl().split(" ")[0]);
+
+    this.confirmationHeader.innerText = "Confirm " + (amountOfVests * this.VESTS_TO_STEEM_CONST).toFixed(3) + " Steem Power Delegation to " + Utils.capitalizeFirstLetter(this.getDelegateeFromUrl());
+
     this.initEventListeners();
   }
 
@@ -24,7 +31,6 @@ class DelegateSteemPower {
         }
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
   }
 
@@ -34,8 +40,17 @@ class DelegateSteemPower {
         allowed: false, settings: {}
       };
       backgroundPage.responsesWaitingForProceed[this.requestId](params);
-      window.close();
     }.bind(this));
+  }
+
+  getDelegateeFromUrl() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("delegatee");
+  }
+
+  getVestingSharesFromUrl() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("vesting_shares");
   }
 
   getRequestIdFromUrl() {
