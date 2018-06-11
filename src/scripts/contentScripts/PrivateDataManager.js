@@ -49,8 +49,11 @@ export class PrivateDataManager {
   static getActiveCredentials(callback) {
     DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
-        if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName].activeKey)) {
+        if (privateDataModel[domainName] && PrivateDataManager.checkIfIsStored(privateDataModel[domainName].activeKey)) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].activeKey);
+        }
+        else{
+          throw new Error("User is not logged in!");
         }
       });
     });
@@ -63,8 +66,11 @@ export class PrivateDataManager {
   static getPostingCredentials(callback) {
     DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
-        if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName].postingKey)) {
+        if (privateDataModel[domainName] && PrivateDataManager.checkIfIsStored(privateDataModel[domainName].postingKey)) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].postingKey);
+        }
+        else{
+          throw new Error("User is not logged in!");
         }
       });
     });
@@ -77,8 +83,11 @@ export class PrivateDataManager {
   static getMemoCredentials(callback) {
     DomainGetter.getPageDomain(function (domainName) {
       ext.storage.local.get(domainName, function (privateDataModel) {
-        if (PrivateDataManager.checkIfIsStored(privateDataModel[domainName])) {
+        if (privateDataModel[domainName] && PrivateDataManager.checkIfIsStored(privateDataModel[domainName])) {
           callback(privateDataModel[domainName].steemAccountName, privateDataModel[domainName].memoKey);
+        }
+        else{
+          throw new Error("User is not logged in!");
         }
       });
     });
