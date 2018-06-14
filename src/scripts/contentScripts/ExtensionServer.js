@@ -4,7 +4,7 @@ export class ExtensionServer {
 
     window.addEventListener("message", function (data) {
       if(!data.data.serverMessage && data.data.route) {
-        this.routes[data.data.route].onRequest(data.data.params, this.routes[data.data.route].response);
+        this.routes[data.data.route].onRequest(data.data.params, new Response(data.data.id, data.data.route));
       }
     }.bind(this));
   }
@@ -12,12 +12,12 @@ export class ExtensionServer {
   on(route, onRequest) {
     this.routes[route] = {};
     this.routes[route].onRequest = onRequest;
-    this.routes[route].response = new Response(route);
   }
 }
 
 class Response {
-  constructor(route) {
+  constructor(id, route) {
+    this.id = id;
     this.route = route;
   }
 
@@ -29,6 +29,7 @@ class Response {
     }
 
     window.postMessage({
+      id: this.id,
       route: this.route,
       params: params,
       errorSerializable: errorSerializable,
