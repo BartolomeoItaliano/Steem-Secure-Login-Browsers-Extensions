@@ -32,21 +32,15 @@
     Steem Secure Login - How To Install
   </h1>
 </div>
-<div align="center">
 
-<p><b>As long as there is no released version to install this extension you've got to build project.</b></p>
+### Chrome:
+https://chrome.google.com/webstore/detail/steem-secure-login/lppkoakaoipaonmeedlcgnlolngopbgo
+### Firefox: 
+https://addons.mozilla.org/en-US/firefox/addon/steem-secure-login
+### Opera
+(6.14.2018) Waiting for extension approval
 
-<p>
 
-  1. npm install
-  
-  2. npm run build
-  
-  3. Now choose browser and procceed with online guidelines to: "temporarily install an extension for testing and debugging"
-   In build folder you will find created by previous command corresponding extensions code.
-
-</p>
-</div>
 
 <div align="center">
   <h1>
